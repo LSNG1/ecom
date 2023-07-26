@@ -12,9 +12,10 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.3.*",
         "symfony/runtime": "6.3.*",
+        "symfony/stimulus-bundle": "^2.10",
+        "symfony/ux-react": "^2.10",
+        "symfony/webpack-encore-bundle": "^2.0",
         "symfony/yaml": "6.3.*"
-    },
-    "require-dev": {
     },
     "config": {
         "allow-plugins": {
