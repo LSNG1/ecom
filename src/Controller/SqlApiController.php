@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Gpu;
 use App\Entity\Cpu;
 use App\Entity\Box;
+use App\Entity\Mouse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -92,6 +93,33 @@ class SqlApiController extends AbstractController
                'side_panel' => $product->getSidePanel(),
                'external_525_bays' => $product->getExternal525Bays(),
                'internal_35_bays' => $product->getInternal35Bays(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/mouse', name: 'mouse_index', methods:['get'] )]
+    public function mouse(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(Mouse::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'tracking_method' => $product->getTrackingMethod(),
+               'connection_type' => $product->getConnectionType(),
+               'max_dpi' => $product->getMaxDpi(),
+               'hand_orientation' => $product->getHandOrientation(),
+               'color' => $product->getcolor(),
                
                
            ];
