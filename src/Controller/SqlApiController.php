@@ -7,6 +7,7 @@ use App\Entity\Cpu;
 use App\Entity\Box;
 use App\Entity\Mouse;
 use App\Entity\Headphones;
+use App\Entity\Motherboard;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -147,6 +148,33 @@ class SqlApiController extends AbstractController
                'microphone' => $product->isMicrophone(),
                'wireless' => $product->isWireless(),
                'enclosure_type' => $product->getEnclosureType(),
+               'color' => $product->getcolor(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/motherboard', name: 'motherboard_index', methods:['get'] )]
+    public function motherboard(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(Motherboard::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'socket' => $product->getSocket(),
+               'form_factor' => $product->getFormFactor(),
+               'max_memory' => $product->getMaxMemory(),
+               'memory_slots' => $product->getMemorySlots(),
                'color' => $product->getcolor(),
                
                
