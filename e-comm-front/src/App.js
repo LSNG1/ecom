@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { Shop } from "./pages/shop/shop"
-import { Pannier } from "./pages/pannier/pannier";
+import { Cart } from "./pages/cart/cart";
 function App() {
   return (
     <div className="App">
@@ -10,7 +10,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Shop />}/>
-          <Route path="/Pannier" element={<Pannier />}/>
+          <Route path="/Pannier" element={<Cart />}/>
 
         </Routes>
       </Router>
