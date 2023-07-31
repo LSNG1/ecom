@@ -1,23 +1,14 @@
-/* App.css */
-
-/* Existing styles (you may have other styles here) */
-
-/* Fixed Navbar */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #333;
-  /* You can change the background color as desired */
   color: #fff;
   padding: 20px 10px;
-  /* Increased vertical spacing */
   margin-bottom: 40%;
-  /* Increased spacing from the boxes */
 }
 
-/* Navigation links */
 .nav-list {
   display: flex;
   justify-content: center;
@@ -42,13 +33,11 @@
   border-radius: 5px;
 }
 
-/* Product boxes and containers */
 .box-main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 100px;
-  /* Increased spacing between navbar and products */
 }
 
 .product-container {
@@ -56,15 +45,12 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 40px;
-  /* Increased horizontal spacing between product boxes */
   margin-bottom: 40px;
-  /* Increased spacing between product rows */
   margin-top: 10%;
 }
 
 .product-box {
   flex: 0 0 calc(33.33% - 40px);
-  /* Increased spacing between product boxes */
   max-width: 250px;
   text-align: center;
   padding: 20px;
@@ -72,7 +58,6 @@
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Adding a box shadow for a subtle effect */
 }
 
 .product-box img {
@@ -81,34 +66,23 @@
   object-fit: cover;
 }
 
-/* Different classes for product boxes */
 .box1 {
   background-color: #f5f5f5;
-  /* Light gray background for box1 */
 }
 
 .box2 {
   background-color: #f0f0f0;
-  /* Slightly darker gray background for box2 */
 }
 
-/* Footer styles */
 .footer {
   text-align: center;
   padding: 20px 10px;
-  /* Increased vertical spacing */
   background-color: #333;
   color: #fff;
-  margin-top: 90%;
-  /* Increased spacing from the boxes */
+  padding-top: 150%;
 }
-/* Existing styles (you may have other styles here) */
 
-/* Logo in the navbar */
 .App-logo {
-  height: 30px;
-  /* Adjust the height as needed to make the logo smaller */
+  width: 20px;
   pointer-events: none;
 }
-
-/* Other existing styles for the product boxes, footer, and other elements */
