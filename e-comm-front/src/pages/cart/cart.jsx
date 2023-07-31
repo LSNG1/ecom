@@ -18,6 +18,7 @@ const { cartItems } = useContext(ShopContext);
             }
           })}
         </div>
+        <div className='checkout'></div>
     </div>
   )
 }
