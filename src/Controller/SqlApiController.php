@@ -8,6 +8,10 @@ use App\Entity\Box;
 use App\Entity\Mouse;
 use App\Entity\Headphones;
 use App\Entity\Motherboard;
+use App\Entity\PowerSupply;
+use App\Entity\Memory;
+use App\Entity\CpuCooler;
+use App\Entity\HardDrive;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -176,6 +180,115 @@ class SqlApiController extends AbstractController
                'max_memory' => $product->getMaxMemory(),
                'memory_slots' => $product->getMemorySlots(),
                'color' => $product->getcolor(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/power_supply', name: 'power_supply_index', methods:['get'] )]
+    public function power_supply(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(PowerSupply::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'type' => $product->getType(),
+               'efficiency' => $product->getEfficiency(),
+               'wattage' => $product->getWattage(),
+               'modular' => $product->getModular(),
+               'color' => $product->getcolor(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/memory', name: 'memory_index', methods:['get'] )]
+    public function memory(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(Memory::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'speed' => $product->getSpeed(),
+               'modules' => $product->getModules(),
+               'price_per_gb' => $product->getPricePerGb(),
+               'color' => $product->getcolor(),
+               'first_word_latency' => $product->getFirstWordLatency(),
+               'cas_latency' => $product->getCasLatency(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/cpu_cooler', name: 'memorycpu_cooler', methods:['get'] )]
+    public function cpu_cooler(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(CpuCooler::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'rpm' => $product->getRpm(),
+               'noise_level' => $product->getNoiseLevel(),
+               'color' => $product->getcolor(),
+               'size' => $product->getSize(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/hard_drive', name: 'hard_drive', methods:['get'] )]
+    public function hard_drive(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(HardDrive::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'capacity' => $product->getCapacity(),
+               'price_per_gb' => $product->getPricePerGb(),
+               'type' => $product->getType(),
+               'cache' => $product->getCache(),
+               'form_factor' => $product->getFormFactor(),
+               'interface' => $product->getInterface(),
                
                
            ];
