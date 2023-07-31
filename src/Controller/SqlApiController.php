@@ -6,6 +6,7 @@ use App\Entity\Gpu;
 use App\Entity\Cpu;
 use App\Entity\Box;
 use App\Entity\Mouse;
+use App\Entity\Headphones;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -119,6 +120,33 @@ class SqlApiController extends AbstractController
                'connection_type' => $product->getConnectionType(),
                'max_dpi' => $product->getMaxDpi(),
                'hand_orientation' => $product->getHandOrientation(),
+               'color' => $product->getcolor(),
+               
+               
+           ];
+        }
+   
+        return $this->json($data);
+    }
+
+    #[Route('/headphones', name: 'headphones_index', methods:['get'] )]
+    public function headphones(ManagerRegistry $doctrine): JsonResponse
+    {
+        $products = $doctrine
+            ->getRepository(Headphones::class)
+            ->findAll();
+   
+        $data = [];
+   
+        foreach ($products as $product) {
+           $data[] = [
+               'id' => $product->getId(),
+               'name' => $product->getName(),
+               'price' => $product->getPrice(),
+               'frequency_response' => $product->getFrequencyResponse(),
+               'microphone' => $product->isMicrophone(),
+               'wireless' => $product->isWireless(),
+               'enclosure_type' => $product->getEnclosureType(),
                'color' => $product->getcolor(),
                
                
