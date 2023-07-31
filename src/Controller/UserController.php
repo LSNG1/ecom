@@ -38,7 +38,7 @@ class UserController extends AbstractController
 
                 // ... perform some action, such as saving the task to the database
     
-            return $this->redirectToRoute('task_success');
+            
             }
 
         return $this->render('user/register.html.twig', [
