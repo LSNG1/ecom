@@ -73,6 +73,9 @@
 .box2 {
   background-color: #f0f0f0;
 }
+.box3 {
+  background-color: #f0f0f0;
+}
 
 .footer {
   text-align: center;
@@ -83,6 +86,7 @@
 }
 
 .App-logo {
-  width: 20px;
+  height: 20px;
+  font-weight: 20px;
   pointer-events: none;
 }

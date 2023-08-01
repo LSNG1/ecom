@@ -65,8 +65,9 @@ function App() {
       <section className="section">
         <div className="box-main">
           <div className="product-container">
-            {products.slice(0, 3).map((product) => (
+            {products.slice(0, 2).map((product) => (
               <div key={product.id} className="product-box box1">
+                <p>HOTTEST PRODUCTS<br></br></p>
                 <img src={product.imageUrl} alt={product.name} />
                 <h2>{product.name}</h2>
                 <p>{product.price}</p>
@@ -75,8 +76,20 @@ function App() {
           </div>
 
           <div className="product-container">
-            {products.slice(3).map((product) => (
+            {products.slice(2, 4).map((product) => (
               <div key={product.id} className="product-box box2">
+                <p>RANDOM HOT PRODUCTS <br></br></p>
+                <img src={product.imageUrl} alt={product.name} />
+                <h2>{product.name}</h2>
+                <p>{product.price}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="product-container">
+            {products.slice(4 , 6).map((product) => (
+              <div key={product.id} className="product-box box3">
+                <p>CHEAP BUT GREAT<br></br></p>
                 <img src={product.imageUrl} alt={product.name} />
                 <h2>{product.name}</h2>
                 <p>{product.price}</p>
@@ -87,7 +100,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p className="text-footer">Copyright ©-All rights are reserved</p>
+        <p className="text-footer">Copyright © 2023-2023 / FlopAchatPc</p>
       </footer>
     </div>
   );
