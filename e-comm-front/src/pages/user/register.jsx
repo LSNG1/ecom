@@ -30,6 +30,8 @@ export class Register extends Component {
   }
 
   handleEmailChange(event) {
+
+
     const user = { ...this.state.user, email: event.target.value };
     this.setState({ user });
   }
@@ -62,6 +64,14 @@ export class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    let regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    if (!regex.test(this.state.user.email)) {
+      alert("Invalid email address!");
+    } else {
+      alert("Valid email address!");
+    }
     
     alert(this.state.user.birthdate);
   }
