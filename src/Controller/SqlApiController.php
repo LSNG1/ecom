@@ -22,7 +22,15 @@ use App\Entity\Project;
 #[Route('/api', name: 'api_')]
 class SqlApiController extends AbstractController
 {
-    #[Route('/gpu', name: 'project_index', methods:['get'] )]
+
+
+    // #1 = route get -> return toute la data du / (exemple : /gpu = renvoie le json de tout les gpu)
+
+    //#2 = route qui return dans la section uniquement le produit qui a l'id demender (ex : /gpu/1 = Json du gpu avec l'id 1 uniquement)
+
+    //#3 = route pour ajouté dans la db avec un form.
+
+    #[Route('/gpu', name: 'project_index', methods:['get'] )]                //#1
     public function index(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -50,7 +58,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/gpu/{id}', name: 'gpuID_index', methods:['get'])]
+    #[Route('/gpu/{id}', name: 'gpuID_index', methods:['get'])]                 //#2
     public function gpuID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Gpu::class)->find($id);
@@ -81,9 +89,46 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/gpu', name: 'ADDgpu', methods:['post'] )]                            #3 
+    public function create(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+                                                                //dans le form, il faut mettre en tant que name (pour le post) les meme données qu'en dessous : 
+        $product = new Gpu();
+        $product->setName($request->request->get('name'));          //name
+        $product->setPrice($request->request->get('price'));        //price
+        $product->setChipset($request->request->get('chipset'));    //chipset
+        $product->setMemory($request->request->get('memory'));      //memory
+        $product->setCoreClock($request->request->get('core_clock')); //core clock
+        $product->setBoost_Clock($request->request->get('boost_clock')); //boost_clock
+        $product->setColor($request->request->get('color'));        //color
+        $product->setLength($request->request->get('length'));      //length    
+                                                                    
+                                                                    //toujours faire atention et bien regarder a mettre les memes !
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'chipset' => $product->getChipset(),
+            'memory' => $product->getMemory(),
+            'coreClock' => $product->getCoreClock(),
+            'boost' => $product->getBoost_Clock(),
+            'color' => $product->getColor(),
+            'length' => $product->getLength(),
+
+        ];
+           
+        return $this->json($data);
+    }
 
 
-    #[Route('/cpu', name: 'cpu_index', methods:['get'] )]
+
+    #[Route('/cpu', name: 'cpu_index', methods:['get'] )]                   //#1
     public function cpu(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -111,7 +156,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/cpu/{id}', name: 'cpuID_index', methods:['get'])]
+    #[Route('/cpu/{id}', name: 'cpuID_index', methods:['get'])]                 //#2
     public function cpuID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Cpu::class)->find($id);
@@ -142,7 +187,42 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/box', name: 'box_index', methods:['get'] )]
+    #[Route('/cpu', name: 'ADDcpu', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createCPU(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Cpu();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setCoreCount($request->request->get('core_count'));       // <--
+        $product->setCoreClock($request->request->get('core_clock'));       // <--
+        $product->setBoostClock($request->request->get('boost_clock'));     // <--
+        $product->setTdp($request->request->get('tdp'));                    // <--
+        $product->setGraphics($request->request->get('graphics'));          // <--
+        $product->setSmt($request->request->get('smt'));                    // <--
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'core_count' => $product->getCoreCount(),
+            'core_clock' => $product->getCoreClock(),
+            'boost_clock' => $product->getBoostClock(),
+            'tdp' => $product->getTdp(),
+            'graphics' => $product->getGraphics(),
+            'smt' => $product->isSmt(),
+
+        ];
+           
+        return $this->json($data);
+    }
+
+    #[Route('/box', name: 'box_index', methods:['get'] )]                   #1
     public function box(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -170,7 +250,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/box/{id}', name: 'boxID_index', methods:['get'])]
+    #[Route('/box/{id}', name: 'boxID_index', methods:['get'])]                 #2
     public function boxID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Box::class)->find($id);
@@ -201,7 +281,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/mouse', name: 'mouse_index', methods:['get'] )]
+    #[Route('/mouse', name: 'mouse_index', methods:['get'] )]                   #1
     public function mouse(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -228,7 +308,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/mouse/{id}', name: 'mouseID_index', methods:['get'])]
+    #[Route('/mouse/{id}', name: 'mouseID_index', methods:['get'])]                 #2
     public function mouseID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Mouse::class)->find($id);
@@ -258,7 +338,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/headphones', name: 'headphones_index', methods:['get'] )]
+    #[Route('/headphones', name: 'headphones_index', methods:['get'] )]                     #1
     public function headphones(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -285,7 +365,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/headphones/{id}', name: 'headphonesID_index', methods:['get'])]
+    #[Route('/headphones/{id}', name: 'headphonesID_index', methods:['get'])]                   #2
     public function headphonesID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Headphones::class)->find($id);
@@ -315,7 +395,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/motherboard', name: 'motherboard_index', methods:['get'] )]
+    #[Route('/motherboard', name: 'motherboard_index', methods:['get'] )]                   #1
     public function motherboard(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -342,7 +422,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/motherboard/{id}', name: 'motherboardID_index', methods:['get'])]
+    #[Route('/motherboard/{id}', name: 'motherboardID_index', methods:['get'])]                 #2
     public function motherboardID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Motherboard::class)->find($id);
@@ -371,7 +451,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/power_supply', name: 'power_supply_index', methods:['get'] )]
+    #[Route('/power_supply', name: 'power_supply_index', methods:['get'] )]                     #1
     public function power_supply(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -398,7 +478,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/power_supply/{id}', name: 'power_supplyID_index', methods:['get'])]
+    #[Route('/power_supply/{id}', name: 'power_supplyID_index', methods:['get'])]           #2
     public function power_supplyID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(PowerSupply::class)->find($id);
@@ -427,7 +507,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/memory', name: 'memory_index', methods:['get'] )]
+    #[Route('/memory', name: 'memory_index', methods:['get'] )]                 #1
     public function memory(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -455,7 +535,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/memory/{id}', name: 'memoryID_index', methods:['get'])]
+    #[Route('/memory/{id}', name: 'memoryID_index', methods:['get'])]                   #2
     public function memoryID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(Memory::class)->find($id);
@@ -485,7 +565,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/cpu_cooler', name: 'memorycpu_cooler', methods:['get'] )]
+    #[Route('/cpu_cooler', name: 'memorycpu_cooler', methods:['get'] )]             #1
     public function cpu_cooler(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -511,7 +591,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/cpu_cooler/{id}', name: 'cpu_coolerID_index', methods:['get'])]
+    #[Route('/cpu_cooler/{id}', name: 'cpu_coolerID_index', methods:['get'])]           #2
     public function cpu_coolerID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(CpuCooler::class)->find($id);
@@ -539,7 +619,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/hard_drive', name: 'hard_drive', methods:['get'] )]
+    #[Route('/hard_drive', name: 'hard_drive', methods:['get'] )]               #1
     public function hard_drive(ManagerRegistry $doctrine): JsonResponse
     {
         $product = $doctrine
@@ -567,7 +647,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/hard_drive/{id}', name: 'hard_driveID_index', methods:['get'])]
+    #[Route('/hard_drive/{id}', name: 'hard_driveID_index', methods:['get'])]               #2
     public function hard_driveID(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $product = $doctrine->getRepository(HardDrive::class)->find($id);

@@ -108,7 +108,7 @@ class Gpu
         return $this->boost_clock;
     }
 
-    public function setBoost�Clock(?string $boost_clock): static
+    public function setBoost_Clock(?string $boost_clock): static
     {
         $this->boost_clock = $boost_clock;
 
