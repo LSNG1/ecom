@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Navbar } from "./components/navbar";
 
 export class Register extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    
+
     alert(this.state.user);
   }
 
