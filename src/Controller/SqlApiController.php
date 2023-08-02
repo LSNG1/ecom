@@ -281,6 +281,41 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/box', name: 'ADDbox', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createbox(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Box();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setType($request->request->get('type'));       // <--
+        $product->setColor($request->request->get('color'));       // <--
+        $product->setPsu($request->request->get('psu'));     // <--
+        $product->setSidePanel($request->request->get('sidepanel'));                    // <--
+        $product->setExternal525Bays($request->request->get('external_525_bays'));          // <--
+        $product->setInternal35Bays($request->request->get('internal_35_bays'));                    // <--
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'type' => $product->getType(),
+            'color' => $product->getColor(),
+            'psu' => $product->getPsu(),
+            'side_panel' => $product->getSidePanel(),
+            'external_525_bays' => $product->getExternal525Bays(),
+            'internal_35_bays' => $product->getInternal35Bays(),
+
+        ];
+           
+        return $this->json($data);
+    }
+
     #[Route('/mouse', name: 'mouse_index', methods:['get'] )]                   #1
     public function mouse(ManagerRegistry $doctrine): JsonResponse
     {
@@ -335,6 +370,39 @@ class SqlApiController extends AbstractController
             ];
         // }
 
+        return $this->json($data);
+    }
+
+    #[Route('/mouse', name: 'ADDmouse', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createmouse(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Mouse();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setTrackingMethod($request->request->get('tracking_method'));       // <--
+        $product->setConnectionType($request->request->get('connection_type'));       // <--
+        $product->setMaxDpi($request->request->get('max_dpi'));     // <--
+        $product->setHandOrientation($request->request->get('hand_orientation'));                    // <--
+        $product->setColor($request->request->get('color'));          // <--
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'tracking_method' => $product->getTrackingMethod(),
+            'connection_type' => $product->getConnectionType(),
+            'max_dpi' => $product->getMaxDpi(),
+            'hand_orientation' => $product->getHandOrientation(),
+            'color' => $product->getcolor(),
+
+        ];
+           
         return $this->json($data);
     }
 
@@ -395,6 +463,40 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/headphones', name: 'ADDheadphones', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createheadphones(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Headphones();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setType($request->request->get('type'));       // <--
+        $product->setFrequencyResponse($request->request->get('frequency_response'));       // <--
+        $product->setMicrophone($request->request->get('microphone'));     // <--
+        $product->setWireless($request->request->get('wireless'));
+        $product->setEnclosureType($request->request->get('enclosure_type'));          // <--        // <--
+        $product->setColor($request->request->get('color'));          // <--
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'frequency_response' => $product->getFrequencyResponse(),
+            'microphone' => $product->isMicrophone(),
+            'wireless' => $product->isWireless(),
+            'enclosure_type' => $product->getEnclosureType(),
+            'color' => $product->getcolor(),
+
+        ];
+           
+        return $this->json($data);
+    }
+
     #[Route('/motherboard', name: 'motherboard_index', methods:['get'] )]                   #1
     public function motherboard(ManagerRegistry $doctrine): JsonResponse
     {
@@ -448,6 +550,39 @@ class SqlApiController extends AbstractController
             ];
         // }
 
+        return $this->json($data);
+    }
+
+    #[Route('/motherboard', name: 'ADDmotherboard', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createmotherboard(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Motherboard();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setSocket($request->request->get('socket'));       // <--
+        $product->setFormFactor($request->request->get('form_factor'));       // <--
+        $product->setMaxMemory($request->request->get('max_memory'));     // <--
+        $product->setMemorySlots($request->request->get('memory_slots'));
+        $product->setColor($request->request->get('color'));          // <--
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'socket' => $product->getSocket(),
+            'form_factor' => $product->getFormFactor(),
+            'max_memory' => $product->getMaxMemory(),
+            'memory_slots' => $product->getMemorySlots(),
+            'color' => $product->getcolor(),
+
+        ];
+           
         return $this->json($data);
     }
 
@@ -507,6 +642,40 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/power_supply', name: 'ADDpower_supply', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createpowersupply(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new PowerSupply();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setType($request->request->get('type'));       // <--
+        $product->setEfficency($request->request->get('efficiency'));       // <--
+        $product->setWattage($request->request->get('wattage'));     // <--
+        $product->setModular($request->request->get('modular'));
+        $product->setColor($request->request->get('color'));          // <--
+
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'type' => $product->getType(),
+            'efficiency' => $product->getEfficiency(),
+            'wattage' => $product->getWattage(),
+            'modular' => $product->getModular(),
+            'color' => $product->getcolor(),
+
+        ];
+           
+        return $this->json($data);
+    }
+
+
     #[Route('/memory', name: 'memory_index', methods:['get'] )]                 #1
     public function memory(ManagerRegistry $doctrine): JsonResponse
     {
@@ -565,6 +734,39 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/memory', name: 'ADDmemory', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function creatememory(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Memory();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setSpeed($request->request->get('speed'));       // <--
+        $product->setModules($request->request->get('modules'));       // <--
+        $product->setPricePerBg($request->request->get('price_per_gb'));     // <--
+        $product->setFirstWordLatency($request->request->get('first_word_latency'));
+        $product->setCasLatency($request->request->get('cas_latency'));          // <--
+        $product->setColor($request->request->get('color'));          // <--
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'speed' => $product->getSpeed(),
+                'modules' => $product->getModules(),
+                'price_per_gb' => $product->getPricePerGb(),
+                'color' => $product->getcolor(),
+                'first_word_latency' => $product->getFirstWordLatency(),
+                'cas_latency' => $product->getCasLatency(),
+        ];
+           
+        return $this->json($data);
+    }
+
     #[Route('/cpu_cooler', name: 'memorycpu_cooler', methods:['get'] )]             #1
     public function cpu_cooler(ManagerRegistry $doctrine): JsonResponse
     {
@@ -616,6 +818,35 @@ class SqlApiController extends AbstractController
             ];
         // }
 
+        return $this->json($data);
+    }
+
+    #[Route('/cpucooler', name: 'ADDcpucooler', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createcpucooler(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new Cpucooler();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setRpm($request->request->get('rpm'));       // <--
+        $product->setNoiseLevel($request->request->get('noise_level'));       // <--
+        $product->setSize($request->request->get('size'));     // <--
+        $product->setColor($request->request->get('color'));          // <--
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'rpm' => $product->getRpm(),
+            'noise_level' => $product->getNoiseLevel(),
+            'color' => $product->getcolor(),
+            'size' => $product->getSize(),
+        ];
+           
         return $this->json($data);
     }
 
@@ -674,6 +905,39 @@ class SqlApiController extends AbstractController
             ];
         // }
 
+        return $this->json($data);
+    }
+
+    #[Route('/hard_drive', name: 'ADDhard_drive', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
+    public function createhard_drive(ManagerRegistry $doctrine, Request $request): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+   
+        $product = new HardDrive();
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setCapacity($request->request->get('capacity'));       // <--
+        $product->setPricePerGb($request->request->get('price_per_gb'));       // <--
+        $product->setType($request->request->get('type'));     // <--
+        $product->setCache($request->request->get('cache'));          // <--
+        $product->setFormFactor($request->request->get('form_factor'));          // <--
+        $product->setInterface($request->request->get('interface'));          // <--
+        
+        $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'capacity' => $product->getCapacity(),
+            'price_per_gb' => $product->getPricePerGb(),
+            'type' => $product->getType(),
+            'cache' => $product->getCache(),
+            'form_factor' => $product->getFormFactor(),
+            'interface' => $product->getInterface(),
+        ];
+           
         return $this->json($data);
     }
 }

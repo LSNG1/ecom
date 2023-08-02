@@ -23,7 +23,7 @@ class Memory
     private ?string $speed = null;
 
     #[ORM\Column]
-    private array $modules = [];
+    private string $modules = "null";
 
     #[ORM\Column(nullable: true)]
     private ?int $price_per_gb = null;
@@ -78,12 +78,12 @@ class Memory
         return $this;
     }
 
-    public function getModules(): array
+    public function getModules(): string
     {
         return $this->modules;
     }
 
-    public function setModules(array $modules): static
+    public function setModules(string $modules): static
     {
         $this->modules = $modules;
 
