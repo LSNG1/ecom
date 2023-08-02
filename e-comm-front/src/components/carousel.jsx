@@ -38,7 +38,6 @@ const images = [
 function SwipeableTextMobileStepper() {
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = images.length;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -65,7 +64,9 @@ function SwipeableTextMobileStepper() {
                     bgcolor: 'background.default',
                 }}
             >
-                <Typography>{images[activeStep].label}</Typography>
+                <Typography>
+  {images[activeStep] && images[activeStep].label}
+</Typography>
             </Paper>
             <AutoPlaySwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
