@@ -18,6 +18,7 @@ export const Shop = () => {
 
   return (
     <div className='shop'>
+    <button>Dick’s Fapper</button>
       <div className='Carousel'>
         <SwipeableTextMobileStepper />
       </div>

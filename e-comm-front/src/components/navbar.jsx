@@ -80,9 +80,9 @@ export const Navbar = () => {
               sx={{ mr: 2 }}
             >
               <MenuIcon />
-              <button>TG</button>
-              <button>TG</button>
-              <button>TG</button>
+              <button>Ordinateur</button>
+              <button>Composant</button>
+              <button>Périphérique</button>
             </IconButton>
             
           </Toolbar>
