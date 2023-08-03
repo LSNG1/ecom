@@ -126,6 +126,23 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/gpu/{id}', name: '/gpu_id_delete', methods:['delete'] )]
+    public function deletegpu(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Gpu::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
+
 
 
     #[Route('/cpu', name: 'cpu_index', methods:['get'] )]                   //#1
@@ -185,6 +202,22 @@ class SqlApiController extends AbstractController
         // }
 
         return $this->json($data);
+    }
+
+    #[Route('/cpu/{id}', name: '/cpu_id_delete', methods:['delete'] )]
+    public function deletecpu(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Cpu::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
     }
 
     #[Route('/cpu', name: 'ADDcpu', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
@@ -281,6 +314,22 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/box/{id}', name: '/box_id_delete', methods:['delete'] )]
+    public function deletebox(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Box::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
     #[Route('/box', name: 'ADDbox', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
     public function createbox(ManagerRegistry $doctrine, Request $request): JsonResponse
     {
@@ -373,6 +422,22 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/mouse/{id}', name: '/mouse_id_delete', methods:['delete'] )]
+    public function deletemouse(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Mouse::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
     #[Route('/mouse', name: 'ADDmouse', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
     public function createmouse(ManagerRegistry $doctrine, Request $request): JsonResponse
     {
@@ -461,6 +526,22 @@ class SqlApiController extends AbstractController
         // }
 
         return $this->json($data);
+    }
+
+    #[Route('/headphones/{id}', name: '/headphones_id_delete', methods:['delete'] )]
+    public function deleteheadphones(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Headphones::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
     }
 
     #[Route('/headphones', name: 'ADDheadphones', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
@@ -553,6 +634,22 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/motherboard/{id}', name: '/motherboard_id_delete', methods:['delete'] )]
+    public function deletemotherboard(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Motherboard::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
     #[Route('/motherboard', name: 'ADDmotherboard', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
     public function createmotherboard(ManagerRegistry $doctrine, Request $request): JsonResponse
     {
@@ -640,6 +737,22 @@ class SqlApiController extends AbstractController
         // }
 
         return $this->json($data);
+    }
+
+    #[Route('/power_supply/{id}', name: '/power_supply_id_delete', methods:['delete'] )]
+    public function deletepower_supply(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(PowerSupply::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
     }
 
     #[Route('/power_supply', name: 'ADDpower_supply', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
@@ -734,6 +847,22 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/memory/{id}', name: '/memory_id_delete', methods:['delete'] )]
+    public function deletememory(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(Memory::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
     #[Route('/memory', name: 'ADDmemory', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
     public function creatememory(ManagerRegistry $doctrine, Request $request): JsonResponse
     {
@@ -819,6 +948,22 @@ class SqlApiController extends AbstractController
         // }
 
         return $this->json($data);
+    }
+
+    #[Route('/cpu_cooler/{id}', name: '/memory_id_cpu_cooler', methods:['delete'] )]
+    public function deletecpu_cooler(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(CpuCooler::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
     }
 
     #[Route('/cpucooler', name: 'ADDcpucooler', methods:['post'] )]                 //#3            !!! voir le premier #3, attention au name mis dans le form !
@@ -940,4 +1085,21 @@ class SqlApiController extends AbstractController
            
         return $this->json($data);
     }
+
+    #[Route('/hard_drive/{id}', name: 'hard_driveID_delete', methods:['delete'] )]
+    public function deletehard_drive(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $project = $entityManager->getRepository(HardDrive::class)->find($id);
+   
+        if (!$project) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $entityManager->remove($project);
+        $entityManager->flush();
+   
+        return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
 }
