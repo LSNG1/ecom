@@ -21,7 +21,7 @@ final class Version20230730224920 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE cpu (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, price INT NOT NULL, core_count BIGINT NOT NULL, core_clock INT NOT NULL, bost_clock INT NOT NULL, tdp BIGINT NOT NULL, graphics INT  NULL, smt bool NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-    }
+    }                                                                                                           //null                                                         //boost_clock //null                               //VARCHAR(255)
 
     public function down(Schema $schema): void
     {
