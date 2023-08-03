@@ -142,7 +142,43 @@ class SqlApiController extends AbstractController
         return $this->json('Deleted a project successfully with id ' . $id);
     }
 
+    #[Route('/gpu/{id}', name: 'gpu_update', methods:['post'] )]
+    public function gpu_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Gpu::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));          //name
+        $product->setPrice($request->request->get('price'));        //price
+        $product->setChipset($request->request->get('chipset'));    //chipset
+        $product->setMemory($request->request->get('memory'));      //memory
+        $product->setCoreClock($request->request->get('core_clock')); //core clock
+        $product->setBoost_Clock($request->request->get('boost_clock')); //boost_clock
+        $product->setColor($request->request->get('color'));        //color
+        $product->setLength($request->request->get('length'));            // <--
 
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'chipset' => $product->getChipset(),
+            'memory' => $product->getMemory(),
+            'coreClock' => $product->getCoreClock(),
+            'boost' => $product->getBoost_Clock(),
+            'color' => $product->getColor(),
+            'length' => $product->getLength(),
+
+
+        ];
+           
+        return $this->json($data);
+    }
 
 
     #[Route('/cpu', name: 'cpu_index', methods:['get'] )]                   //#1
@@ -255,6 +291,44 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/cpu/{id}', name: 'cpu_update', methods:['post'] )]
+    public function cpu_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Cpu::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setCoreCount($request->request->get('core_count'));       // <--
+        $product->setCoreClock($request->request->get('core_clock'));       // <--
+        $product->setBoostClock($request->request->get('boost_clock'));     // <--
+        $product->setTdp($request->request->get('tdp'));                    // <--
+        $product->setGraphics($request->request->get('graphics'));          // <--
+        $product->setSmt($request->request->get('smt'));                   // <--
+
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'core_count' => $product->getCoreCount(),
+            'core_clock' => $product->getCoreClock(),
+            'boost_clock' => $product->getBoostClock(),
+            'tdp' => $product->getTdp(),
+            'graphics' => $product->getGraphics(),
+            'smt' => $product->isSmt(),
+
+        ];
+           
+        return $this->json($data);
+    }
+    
+
     #[Route('/box', name: 'box_index', methods:['get'] )]                   #1
     public function box(ManagerRegistry $doctrine): JsonResponse
     {
@@ -347,6 +421,43 @@ class SqlApiController extends AbstractController
 
         
         $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'type' => $product->getType(),
+            'color' => $product->getColor(),
+            'psu' => $product->getPsu(),
+            'side_panel' => $product->getSidePanel(),
+            'external_525_bays' => $product->getExternal525Bays(),
+            'internal_35_bays' => $product->getInternal35Bays(),
+
+        ];
+           
+        return $this->json($data);
+    }
+
+    #[Route('/box/{id}', name: 'box_update', methods:['post'] )]
+    public function box_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Box::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setType($request->request->get('type'));       // <--
+        $product->setColor($request->request->get('color'));       // <--
+        $product->setPsu($request->request->get('psu'));     // <--
+        $product->setSidePanel($request->request->get('sidepanel'));                    // <--
+        $product->setExternal525Bays($request->request->get('external_525_bays'));          // <--
+        $product->setInternal35Bays($request->request->get('internal_35_bays'));                // <--
+
         $entityManager->flush();
    
         $data =  [
@@ -471,6 +582,40 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/mouse/{id}', name: 'mouse_update', methods:['post'] )]
+    public function mouse_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Mouse::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setTrackingMethod($request->request->get('tracking_method'));       // <--
+        $product->setConnectionType($request->request->get('connection_type'));       // <--
+        $product->setMaxDpi($request->request->get('max_dpi'));     // <--
+        $product->setHandOrientation($request->request->get('hand_orientation'));                    // <--
+        $product->setColor($request->request->get('color'));               // <--
+
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'tracking_method' => $product->getTrackingMethod(),
+            'connection_type' => $product->getConnectionType(),
+            'max_dpi' => $product->getMaxDpi(),
+            'hand_orientation' => $product->getHandOrientation(),
+            'color' => $product->getcolor(),
+        ];
+           
+        return $this->json($data);
+    }
+
     #[Route('/headphones', name: 'headphones_index', methods:['get'] )]                     #1
     public function headphones(ManagerRegistry $doctrine): JsonResponse
     {
@@ -573,6 +718,41 @@ class SqlApiController extends AbstractController
             'enclosure_type' => $product->getEnclosureType(),
             'color' => $product->getcolor(),
 
+        ];
+           
+        return $this->json($data);
+    }
+
+    #[Route('/headphones/{id}', name: 'headphones_update', methods:['post'] )]
+    public function headphones_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Headphones::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setType($request->request->get('type'));       // <--
+        $product->setFrequencyResponse($request->request->get('frequency_response'));       // <--
+        $product->setMicrophone($request->request->get('microphone'));     // <--
+        $product->setWireless($request->request->get('wireless'));
+        $product->setEnclosureType($request->request->get('enclosure_type'));          // <--        // <--
+        $product->setColor($request->request->get('color'));                // <--
+
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'frequency_response' => $product->getFrequencyResponse(),
+            'microphone' => $product->isMicrophone(),
+            'wireless' => $product->isWireless(),
+            'enclosure_type' => $product->getEnclosureType(),
+            'color' => $product->getcolor(),
         ];
            
         return $this->json($data);
@@ -683,6 +863,40 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/motherboard/{id}', name: 'motherboard_update', methods:['post'] )]
+    public function motherboard_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Motherboard::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setSocket($request->request->get('socket'));       // <--
+        $product->setFormFactor($request->request->get('form_factor'));       // <--
+        $product->setMaxMemory($request->request->get('max_memory'));     // <--
+        $product->setMemorySlots($request->request->get('memory_slots'));
+        $product->setColor($request->request->get('color'));          // <--
+
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'socket' => $product->getSocket(),
+            'form_factor' => $product->getFormFactor(),
+            'max_memory' => $product->getMaxMemory(),
+            'memory_slots' => $product->getMemorySlots(),
+            'color' => $product->getcolor(),
+        ];
+           
+        return $this->json($data);
+    }
+
     #[Route('/power_supply', name: 'power_supply_index', methods:['get'] )]                     #1
     public function power_supply(ManagerRegistry $doctrine): JsonResponse
     {
@@ -783,6 +997,40 @@ class SqlApiController extends AbstractController
             'modular' => $product->getModular(),
             'color' => $product->getcolor(),
 
+        ];
+           
+        return $this->json($data);
+    }
+
+
+    #[Route('/power_supply/{id}', name: 'power_supply_update', methods:['post'] )]
+    public function power_supply_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(PowerSupply::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setType($request->request->get('type'));       // <--
+        $product->setEfficency($request->request->get('efficiency'));       // <--
+        $product->setWattage($request->request->get('wattage'));     // <--
+        $product->setModular($request->request->get('modular'));
+        $product->setColor($request->request->get('color'));   
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'type' => $product->getType(),
+            'efficiency' => $product->getEfficiency(),
+            'wattage' => $product->getWattage(),
+            'modular' => $product->getModular(),
+            'color' => $product->getcolor(),
         ];
            
         return $this->json($data);
@@ -896,6 +1144,41 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/memory/{id}', name: 'memory_update', methods:['post'] )]
+    public function memory_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Memory::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setSpeed($request->request->get('speed'));       // <--
+        $product->setModules($request->request->get('modules'));       // <--
+        $product->setPricePerBg($request->request->get('price_per_gb'));     // <--
+        $product->setFirstWordLatency($request->request->get('first_word_latency'));
+        $product->setCasLatency($request->request->get('cas_latency'));          // <--
+        $product->setColor($request->request->get('color')); 
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'speed' => $product->getSpeed(),
+                'modules' => $product->getModules(),
+                'price_per_gb' => $product->getPricePerGb(),
+                'color' => $product->getcolor(),
+                'first_word_latency' => $product->getFirstWordLatency(),
+                'cas_latency' => $product->getCasLatency(),
+        ];
+           
+        return $this->json($data);
+    }
+
     #[Route('/cpu_cooler', name: 'memorycpu_cooler', methods:['get'] )]             #1
     public function cpu_cooler(ManagerRegistry $doctrine): JsonResponse
     {
@@ -980,6 +1263,37 @@ class SqlApiController extends AbstractController
         $product->setColor($request->request->get('color'));          // <--
         
         $entityManager->persist($product);
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'rpm' => $product->getRpm(),
+            'noise_level' => $product->getNoiseLevel(),
+            'color' => $product->getcolor(),
+            'size' => $product->getSize(),
+        ];
+           
+        return $this->json($data);
+    }
+
+    #[Route('/cpu_cooler/{id}', name: 'cpu_cooler_update', methods:['post'] )]
+    public function cpu_cooler_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Cpucooler::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setRpm($request->request->get('rpm'));       // <--
+        $product->setNoiseLevel($request->request->get('noise_level'));       // <--
+        $product->setSize($request->request->get('size'));     // <--
+        $product->setColor($request->request->get('color'));    
         $entityManager->flush();
    
         $data =  [
@@ -1100,6 +1414,41 @@ class SqlApiController extends AbstractController
         $entityManager->flush();
    
         return $this->json('Deleted a project successfully with id ' . $id);
+    }
+
+    #[Route('/hard_drive/{id}', name: 'hard_drive_update', methods:['post'] )]
+    public function hard_drive_update(ManagerRegistry $doctrine, Request $request, int $id): JsonResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(HardDrive::class)->find($id);
+   
+        if (!$product) {
+            return $this->json('No project found for id' . $id, 404);
+        }
+   
+        $product->setName($request->request->get('name'));                  // <--
+        $product->setPrice($request->request->get('price'));                // <--
+        $product->setCapacity($request->request->get('capacity'));       // <--
+        $product->setPricePerGb($request->request->get('price_per_gb'));       // <--
+        $product->setType($request->request->get('type'));     // <--
+        $product->setCache($request->request->get('cache'));          // <--
+        $product->setFormFactor($request->request->get('form_factor'));          // <--
+        $product->setInterface($request->request->get('interface')); 
+        $entityManager->flush();
+   
+        $data =  [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'capacity' => $product->getCapacity(),
+            'price_per_gb' => $product->getPricePerGb(),
+            'type' => $product->getType(),
+            'cache' => $product->getCache(),
+            'form_factor' => $product->getFormFactor(),
+            'interface' => $product->getInterface(),
+        ];
+           
+        return $this->json($data);
     }
 
 }
