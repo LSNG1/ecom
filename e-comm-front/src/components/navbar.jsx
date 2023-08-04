@@ -81,9 +81,9 @@ export const Navbar = () => {
               sx={{ mr: 2 }}
             >
               <MenuIcon />
-              <button>Ordinateur</button>
-              <button>Composant</button>
-              <button>Périphérique</button>
+              <Link to="/Ordinateur"> <button>Ordinateur</button></Link>
+              <Link to="/Composant"> <button>Composant</button></Link>
+              <Link to="/Périphérique"> <button>Périphérique</button></Link>
             </IconButton>
             
           </Toolbar>
