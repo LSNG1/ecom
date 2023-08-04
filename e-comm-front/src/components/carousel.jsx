@@ -14,24 +14,34 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
     {
-        label: 'San Francisco – Oakland Bay Bridge, United States',
+        label: "Le jeu Starfield offert avec l'achat d'un processeur AMD",
         imgPath:
-            'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+            'https://media.topachat.com/media/s1000/649be289cb42ac1f062be67d.webp',
     },
     {
-        label: 'Bird',
+        label: "La puissance Nvidia entre vos mains",
         imgPath:
-            'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+            'https://media.topachat.com/media/s1000/64c77d9e642f572b251f3ddf.webp',
     },
     {
-        label: 'Bali, Indonesia',
+        label: "Moins d'écran de chargement mais plus de chargement de stockage!",
         imgPath:
-            'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+            'https://media.ldlc.com/encart/p/21462_b.jpg',
     },
     {
-        label: 'Goč, Serbia',
+        label: "Profitez de vos jeux avec une qualité sublime",
         imgPath:
-            'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+            'https://media.ldlc.com/encart/p/21501_b.jpg',
+    },
+    {
+        label: "Splendeur et performance by Aorus",
+        imgPath:
+            'https://www.aorus.com/image/banner/GOELITE-1690280290.jpg',
+    },
+    {
+        label: "Dick's Fapper est là pour t'aider à monter ton pc",
+        imgPath:
+            'https://media.topachat.com/media/s1000/63639dcc3b1f41344e0c11a3.webp',
     },
 ];
 
@@ -52,14 +62,14 @@ function SwipeableTextMobileStepper() {
     };
 
     return (
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+        <Box sx={{ maxWidth: 800, flexGrow: 1 }}>
             <Paper
                 square
                 elevation={0}
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    height: 50,
+                    height: 100,
                     pl: 2,
                     bgcolor: 'background.default',
                 }}

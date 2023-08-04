@@ -1,29 +1,29 @@
-import product1 from './assets/pngimg.com - iphone_13_PNG2.png'
-import product2 from './assets/7d204cd60ff1fce24cf6d11f24cd210a.png'
-import product3 from './assets/carte-mere-pc-gamer.png'
-import product4 from './assets/g713-gallery-1.webp'
+import product1 from './assets/suprim3080ti.jpg'
+import product2 from './assets/Proc INTEL.jpg'
+import product3 from './assets/AORUS 4080.jpg'
+import product4 from './assets/sanji.jpg'
 import product5 from './assets/geforce-rtx-2080-technical-photography-angled-003.png'
 import product6 from './assets/logo.png'
 import product7 from './assets/RE1uwh1.png'
 import product8 from './assets/vengeance_rgb_pro_sl_black_1_500x500.png'
-import product9 from './assets/F2EGCfrX0AIv3yt.jpg'
+import product9 from './assets/bankai.jpg'
 
 export const PRODUCTS = [
     {
         id:1,
-        productName: "IPhone",
+        productName: "MSI GeForce RTX 3080 Ti SUPRIM X 12G LHR",
         price: 999,
         productImage: product1,
     },
     {
         id:2,
-        productName: "IPhone",
+        productName: "Processeur Intel® Core™ i7-13700K",
         price: 999,
         productImage: product2,
     },
     {
         id:3,
-        productName: "IPhone",
+        productName: "AORUS GeForce RTX™ 4080 16GB XTREME WATERFORCE ",
         price: 999,
         productImage: product3,
     },

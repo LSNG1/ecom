@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import "./navbar.css"
 import logo from "../assets/logo.png"
 import profil from "../assets/Web capture_3-8-2023_121450_wsl.localhost.jpeg"
-// 
+//
 // Mui Framework
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-// 
+//
 export const Navbar = () => {
   return (
     <div className='navbar'>
@@ -82,10 +82,11 @@ export const Navbar = () => {
             >
               <MenuIcon />
               <button>Ordinateur</button>
+              
               <button>Composant</button>
               <button>Périphérique</button>
             </IconButton>
-            
+
           </Toolbar>
         </AppBar>
       </Box>
