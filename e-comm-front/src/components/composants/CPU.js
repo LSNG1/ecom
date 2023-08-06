@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const url = "https://127.0.0.1:8000/api/cpu";
+const url = "https://127.0.0.1:8001/api/cpu";
 
 export default function CPU ()
 {
