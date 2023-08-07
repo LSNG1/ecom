@@ -21,30 +21,30 @@ class UserController extends AbstractController
 
 
         // creates a task object and initializes some data for this example
-    //     $task = new User();
+        //     $task = new User();
 
-    //     $form = $this->createFormBuilder($task)
-    //         ->add('Email', TextType::class)
-    //         ->add('password', textType::class)
-    //         ->add('save', SubmitType::class, ['label' => 'Create User'])
-    //         ->getForm();
+        //     $form = $this->createFormBuilder($task)
+        //         ->add('Email', TextType::class)
+        //         ->add('password', textType::class)
+        //         ->add('save', SubmitType::class, ['label' => 'Create User'])
+        //         ->getForm();
 
-    //     $form->handleRequest($request);
-    //         if ($form->isSubmitted() &aa();
+        //     $form->handleRequest($request);
+        //         if ($form->isSubmitted() &aa();
 
-                // $entityManager->persist($task);
-                // $entityManager->flush();
+        // $entityManager->persist($task);
+        // $entityManager->flush();
 
 
-    //             // ... perform some action, such as saving the task to the database
-    
-            
-    //         }
+        //             // ... perform some action, such as saving the task to the database
 
-    //     return $this->render('user/register.html.twig', [
-    //             'form' => $form,
-    //     ]);
-        
+
+        //         }
+
+        //     return $this->render('user/register.html.twig', [
+        //             'form' => $form,
+        //     ]);
+
 
     }
 }

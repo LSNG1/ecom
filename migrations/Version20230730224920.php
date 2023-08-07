@@ -30,4 +30,3 @@ final class Version20230730224920 extends AbstractMigration
         $this->addSql('ALTER TABLE gpu CHANGE price price DOUBLE PRECISION DEFAULT NULL');
     }
 }
-
