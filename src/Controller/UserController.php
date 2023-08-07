@@ -14,36 +14,36 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    #[Route('/user', name: 'tamere')]
+    #[Route('/register', methods: ['POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager)
     {
+
+
+
         // creates a task object and initializes some data for this example
-        $task = new User();
+    //     $task = new User();
 
-        $form = $this->createFormBuilder($task)
-            ->add('Email', TextType::class)
-            ->add('password', textType::class)
-            ->add('save', SubmitType::class, ['label' => 'Create User'])
-            ->getForm();
+    //     $form = $this->createFormBuilder($task)
+    //         ->add('Email', TextType::class)
+    //         ->add('password', textType::class)
+    //         ->add('save', SubmitType::class, ['label' => 'Create User'])
+    //         ->getForm();
 
-        $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-                // $form->getData() holds the submitted values
-                // but, the original `$task` variable has also been updated
-                $task = $form->getData();
+    //     $form->handleRequest($request);
+    //         if ($form->isSubmitted() &aa();
 
-                $entityManager->persist($task);
-                $entityManager->flush();
+                // $entityManager->persist($task);
+                // $entityManager->flush();
 
 
-                // ... perform some action, such as saving the task to the database
+    //             // ... perform some action, such as saving the task to the database
     
-            return $this->redirectToRoute('task_success');
-            }
+            
+    //         }
 
-        return $this->render('user/register.html.twig', [
-                'form' => $form,
-        ]);
+    //     return $this->render('user/register.html.twig', [
+    //             'form' => $form,
+    //     ]);
         
 
     }
