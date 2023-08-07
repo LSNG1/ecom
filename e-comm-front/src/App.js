@@ -5,7 +5,6 @@ import { Shop } from "./pages/shop/shop"
 import { Cart } from "./pages/cart/cart";
 import { Register } from "./pages/user/register";
 import { ShopContextProvider } from "./context/shop-context";
-import { Register } from "./pages/user/register";
 function App() {
 	
   return (
