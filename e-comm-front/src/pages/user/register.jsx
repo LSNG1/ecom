@@ -80,7 +80,7 @@ export class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-	
+	console.log(this.state.user);
 
     let regex_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     let regex_country = /^[A-Za-z]+$/;
@@ -122,11 +122,16 @@ export class Register extends Component {
 
 
     axios({
-      method: 'get',
-      url: 'http://localhost:8000/api/register',
+      method: 'POST',
+	    maxBodyLength: Infinity,
+    mode: "cors",
+
+      url: 'https://127.0.0.1:8000/api/users',
+	    headers: { 
+    'Content-Type': 'application/json'
+  },
       data: this.state.user
     })
-    .then(window.location.href = 'http://localhost:8000/api/register')
     .then((response) => {
       console.log(response);
     })
