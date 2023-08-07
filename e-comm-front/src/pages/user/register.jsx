@@ -57,7 +57,7 @@ export class Register extends Component {
     this.setState({ user });
   }
   
-  handleCountryChange(val) {
+  handleCountryChange(val) {  
     const user = { ...this.state.user, country: val };
     this.setState({ user });
   }
@@ -118,6 +118,13 @@ export class Register extends Component {
     // })
 
 
+    console.log(this.state);
+    JSON.stringify(this.state);
+
+    console.log(this.state);
+
+    
+
     alert(typeof(this.state.user.country) );
 
 
@@ -126,7 +133,7 @@ export class Register extends Component {
       url: 'http://localhost:8000/api/register',
       data: this.state.user
     })
-    .then(window.location.href = 'http://localhost:8000/api/register')
+    // .then(window.location.href = 'http://localhost:8000/api/register')
     .then((response) => {
       console.log(response);
     })
@@ -162,7 +169,7 @@ export class Register extends Component {
         <input type="text" value={this.state.user.name} onChange={this.handleNameChange} />
         </label>
         <label>
-          Prénom:
+          PrÃ©nom:
         <input type="text" value={this.state.user.lastname} onChange={this.handleLastNameChange} />
         </label>
         <CountryDropdown
