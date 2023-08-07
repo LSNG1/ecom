@@ -4,7 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MemoryRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Metadata\ApiResource;
+#[ApiResource]
 #[ORM\Entity(repositoryClass: MemoryRepository::class)]
 class Memory
 {
