@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Repository\HeadphonesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
 
+#[ApiResource]
 #[ORM\Entity(repositoryClass: HeadphonesRepository::class)]
 class Headphones
 {

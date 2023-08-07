@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\HardDriveRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
 
+#[ApiResource]
 #[ORM\Entity(repositoryClass: HardDriveRepository::class)]
 class HardDrive
 {
@@ -30,7 +32,7 @@ class HardDrive
     private ?string $type = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    private ?string $cache = null;
+    private ?int $cache = null;
 
     #[ORM\Column(length: 255)]
     private ?string $form_factor = null;
@@ -103,12 +105,12 @@ class HardDrive
         return $this;
     }
 
-    public function getCache(): ?string
+    public function getCache(): ?int
     {
         return $this->cache;
     }
 
-    public function setCache(?string $cache): static
+    public function setCache(?int $cache): static
     {
         $this->cache = $cache;
 
