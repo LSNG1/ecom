@@ -8,6 +8,9 @@
 /var/
 /vendor/
 .env
+/.env
+.env/
+env
 /.history
 ###< symfony/framework-bundle ###
 
