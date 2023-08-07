@@ -118,7 +118,7 @@ export class Register extends Component {
     // })
 
 
-    alert(this.state.user.email);
+    alert(typeof(this.state.user.country) );
 
 
     axios({
