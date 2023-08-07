@@ -1,0 +1,20 @@
+.footer {
+	/* Your existing footer styles */
+}
+
+.footer-links {
+	display: flex;
+	gap: 20px;
+	/* Adjust the gap between links as needed */
+}
+
+.social-icons {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.social-icons .réseau {
+	width: 24px;
+	height: 24px;
+}

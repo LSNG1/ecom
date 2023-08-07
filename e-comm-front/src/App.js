@@ -17,13 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Shop />}/>
           <Route path="/Cart" element={<Cart />}/>
-<<<<<<< HEAD
-        
-
-=======
           <Route path='/Profil' element={<User />}/>
           <Route path="/articles/:id" element={<ArticlePage />} />
->>>>>>> 8fca8bff01ea06b8c10223d6f3cf07e60bd9a8e6
         </Routes>
         <Footer />
       </Router>

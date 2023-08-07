@@ -81,16 +81,18 @@ export const Navbar = () => {
               sx={{ mr: 2 }}
             >
               <MenuIcon />
-<<<<<<< HEAD
-              <button>Ordinateur</button>
-              
-              <button>Composant</button>
-              <button>Périphérique</button>
-=======
-              <Link to="/Ordinateur"> <button>Ordinateur</button></Link>
-              <Link to="/Composant"> <button>Composant</button></Link>
-              <Link to="/Périphérique"> <button>Périphérique</button></Link>
->>>>>>> 8fca8bff01ea06b8c10223d6f3cf07e60bd9a8e6
+              <div class="button-container">
+                <div class="button-wrapper">
+                  <Link to="/Ordinateur"> <button>Ordinateur</button></Link>
+                </div>
+                <div class="button-wrapper">
+                  <Link to="/Composant"> <button>Composant</button></Link>
+                </div>
+                <div class="button-wrapper">
+                  <Link to="/Périphérique"> <button>Périphérique</button></Link>
+                </div>
+              </div>
+
             </IconButton>
 
           </Toolbar>

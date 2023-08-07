@@ -12,7 +12,7 @@
     background-color: rgb(189, 42, 123);
     margin-bottom: 3%;
   }
-  
+
   .product {
     border-radius: 15px;
     width: 300px;
@@ -23,20 +23,20 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .product img {
     width: 300px;
   }
-  
+
   .product .description {
     text-align: center;
   }
-  
+
   .product:hover {
     transition: 0.3s ease-in;
     cursor: pointer;
   }
-  
+
   .addToCartBttn {
     background-color: transparent;
     border: 2px solid rgb(19, 19, 19);
@@ -47,9 +47,14 @@
     padding-bottom: 5px;
     border-radius: 15px;
   }
-  
+
   .addToCartBttn:hover {
     background-color: rgb(19, 19, 19);
     color: white;
     cursor: pointer;
+  }
+
+  .Carousel{
+    margin-top:10% ;
+    margin-left: 35%;
   }

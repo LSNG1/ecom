@@ -5,18 +5,59 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: fixed;
   }
-  
+
   .links {
     margin-right: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .links a {
     text-decoration: none;
     color: white;
     margin-left: 20px;
     font-size: 25px;
   }
+
+    .button-container {
+      display: flex;
+      /* justify-content: center; */
+      align-items: center;
+      /* Adjust this value as needed */
+    }
+
+    .button-wrapper {
+      margin-left: 60%;
+      /* Add spacing between button divs */
+    }
+
+    .button-wrapper button {
+      /* Add any specific styling for the buttons here */
+    background-color: grey;
+    }
+    .button-wrapper button:hover{
+      background-color: rgb(19, 19, 19);
+    }
+
+        .button-container {
+          display: flex;
+          gap: 20px;
+          /* Adjust the gap between buttons as needed */
+        }
+
+        .button-wrapper {
+          border-radius: 8px;
+          /* Apply border radius */
+          /* Hide any overflowing content */
+        }
+
+        .button-wrapper button {
+          width: 100%;
+          padding: 10px 20px;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+        }

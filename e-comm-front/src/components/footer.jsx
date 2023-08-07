@@ -5,6 +5,7 @@ import Payment from "../assets/image.png"
 import { InstagramLogo } from "phosphor-react";
 import { TwitterLogo } from "phosphor-react";
 import { LinkedinLogo } from "phosphor-react";
+import "./navbar.css";
 
 const Footer = () => {
   return (
@@ -14,9 +15,12 @@ const Footer = () => {
       <Link to="/livraison">Livraison</Link>
       <Link to="/Contact-Us">Contact Us</Link>
       <img src={Payment} alt="moyens de payements" />
-      <div><InstagramLogo size={24} /></div>
-      <div><TwitterLogo size={24} /></div>
-      <div><LinkedinLogo size={24} /></div>
+      <div className="social-icons">
+        <div class="réseau"><InstagramLogo size={24} /></div>
+        <div class="réseau"><TwitterLogo size={24} /></div>
+        <div class="réseau"><LinkedinLogo size={24} /></div>
+      </div>
+
     </footer>
   );
 };
