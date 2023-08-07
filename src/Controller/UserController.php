@@ -18,6 +18,17 @@ class UserController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager)
     {
 
+        // $data = new User();
+        // dd($data);
+        // $data = $request->getContent();
+        // dd($data);
+        // $data = json_decode($data, true);
+        // return $data;
+
+
+        // dd($data);
+
+
 
 
         // creates a task object and initializes some data for this example

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 import axios from 'axios';
+import { redirect } from 'react-router-dom';
 
 export class Register extends Component {
   constructor(props) {
@@ -85,27 +86,64 @@ export class Register extends Component {
     let regex_country = /^[A-Za-z]+$/;
     let regex_name = /[A-Za-z]/;
 
-    if (!regex_email.test(this.state.user.email)) {
-      alert("Invalid email address!");
-    } else {
-      alert("Valid email address!");
-    }
-    if(!(regex_country.test(this.state.user.country)) && this.state.user.country.length < 3) {
-    	alert("Invalid country")
-    } else {
-    	alert("Country valid")
-    }
-    if(!regex_name.test(this.state.user.name)) {
-    	alert("invalid name format")
-    } else {
-    	alert("valid name")
-    }
-    if(!regex_name.test(this.state.user.lastname)) {
-    	alert("invalid lastname format")
-    } else {
-    	alert("valid lastname")
-    }
-    alert(this.state.user.birthdate);
+    // if (!regex_email.test(this.state.user.email)) {
+    //   alert("Invalid email address!");
+    // } else {
+    //   alert("Valid email address!");
+    // }
+    // if(!(regex_country.test(this.state.user.country)) && this.state.user.country.length < 3) {
+    // 	alert("Invalid country")
+    // } else {
+    // 	alert("Country valid")
+    // }
+    // if(!regex_name.test(this.state.user.name)) {
+    // 	alert("invalid name format")
+    // } else {
+    // 	alert("valid name")
+    // }
+    // if(!regex_name.test(this.state.user.lastname)) {
+    // 	alert("invalid lastname format")
+    // } else {
+    // 	alert("valid lastname")
+    // }
+
+
+
+    // axios.post('http://localhost:8000/register', {name: "XD"},
+    // {
+    //   headers: {
+    //   'Access-Control-Allow-Origin': '*',
+    //   'Content-Type': 'application/json',
+    //   }
+    // })
+
+
+    alert(this.state.user.email);
+
+
+    axios({
+      method: 'get',
+      url: 'http://localhost:8000/api/register',
+      data: this.state.user
+    })
+    .then(window.location.href = 'http://localhost:8000/api/register')
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response);
+        console.log("server responded");
+      } else if (error.request) {
+        console.log("network error");
+      } else {
+        console.log(error);
+      }
+    });
+    // .then(window.location.href = 'http://localhost:8000/register');
+
+
+    // .then(redirect('https://localhost:8000/register'));
   }
 
   render() {
