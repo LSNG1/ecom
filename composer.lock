@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9537032929305b76ed0dddacf9f5eff9",
-    "content-hash": "bedadb686992774b5ed9b751b79e9bef",
+    "content-hash": "f248ee582082d193f137f34c6d8e9d1a",
     "packages": [
         {
             "name": "api-platform/core",
@@ -175,82 +174,6 @@
                 }
             ],
             "time": "2023-08-03T16:44:18+00:00"
-        },
-        {
-            "name": "doctrine/annotations",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/annotations.git",
-                "reference": "e157ef3f3124bbf6fe7ce0ffd109e8a8ef284e7f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/e157ef3f3124bbf6fe7ce0ffd109e8a8ef284e7f",
-                "reference": "e157ef3f3124bbf6fe7ce0ffd109e8a8ef284e7f",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/lexer": "^2 || ^3",
-                "ext-tokenizer": "*",
-                "php": "^7.2 || ^8.0",
-                "psr/cache": "^1 || ^2 || ^3"
-            },
-            "require-dev": {
-                "doctrine/cache": "^2.0",
-                "doctrine/coding-standard": "^10",
-                "phpstan/phpstan": "^1.8.0",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "symfony/cache": "^5.4 || ^6",
-                "vimeo/psalm": "^4.10"
-            },
-            "suggest": {
-                "php": "PHP 8.0 or higher comes with attributes, a native replacement for annotations"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Docblock Annotations Parser",
-            "homepage": "https://www.doctrine-project.org/projects/annotations.html",
-            "keywords": [
-                "annotations",
-                "docblock",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/2.0.1"
-            },
-            "time": "2023-02-02T22:02:53+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -1707,359 +1630,6 @@
                 }
             ],
             "time": "2023-01-14T14:17:03+00:00"
-        },
-        {
-            "name": "friendsofsymfony/rest-bundle",
-            "version": "3.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "893f3a01e4d88789abc399c6f1b3cfff79238734"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/893f3a01e4d88789abc399c6f1b3cfff79238734",
-                "reference": "893f3a01e4d88789abc399c6f1b3cfff79238734",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0",
-                "symfony/config": "^4.4|^5.3|^6.0",
-                "symfony/dependency-injection": "^4.4|^5.3|^6.0",
-                "symfony/event-dispatcher": "^4.4|^5.3|^6.0",
-                "symfony/framework-bundle": "^4.4.1|^5.0|^6.0",
-                "symfony/http-foundation": "^4.4|^5.3|^6.0",
-                "symfony/http-kernel": "^4.4|^5.3|^6.0",
-                "symfony/routing": "^4.4|^5.3|^6.0",
-                "symfony/security-core": "^4.4|^5.3|^6.0",
-                "willdurand/jsonp-callback-validator": "^1.0|^2.0",
-                "willdurand/negotiation": "^2.0|^3.0"
-            },
-            "conflict": {
-                "doctrine/annotations": "<1.12",
-                "jms/serializer": "<1.13.0",
-                "jms/serializer-bundle": "<2.4.3|3.0.0",
-                "sensio/framework-extra-bundle": "<6.1",
-                "symfony/error-handler": "<4.4.1"
-            },
-            "require-dev": {
-                "doctrine/annotations": "^1.13.2",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "jms/serializer": "^1.13|^2.0|^3.0",
-                "jms/serializer-bundle": "^2.4.3|^3.0.1|^4.0|^5.0",
-                "psr/http-message": "^1.0",
-                "psr/log": "^1.0|^2.0|^3.0",
-                "sensio/framework-extra-bundle": "^6.1",
-                "symfony/asset": "^4.4|^5.3|^6.0",
-                "symfony/browser-kit": "^4.4|^5.3|^6.0",
-                "symfony/css-selector": "^4.4|^5.3|^6.0",
-                "symfony/expression-language": "^4.4|^5.3|^6.0",
-                "symfony/form": "^4.4|^5.3|^6.0",
-                "symfony/mime": "^4.4|^5.3|^6.0",
-                "symfony/phpunit-bridge": "^5.3|^6.0",
-                "symfony/security-bundle": "^4.4|^5.3|^6.0",
-                "symfony/serializer": "^4.4|^5.3|^6.0",
-                "symfony/twig-bundle": "^4.4|^5.3|^6.0",
-                "symfony/validator": "^4.4|^5.3|^6.0",
-                "symfony/web-profiler-bundle": "^4.4|^5.3|^6.0",
-                "symfony/yaml": "^4.4|^5.3|^6.0"
-            },
-            "suggest": {
-                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires ^2.0|^3.0",
-                "sensio/framework-extra-bundle": "Add support for the request body converter and the view response listener, requires ^3.0",
-                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ^2.7|^3.0",
-                "symfony/validator": "Add support for validation capabilities in the ParamFetcher, requires ^2.7|^3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "3.x-dev": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "FOS\\RestBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "Resources/",
-                    "Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lukas Kahwe Smith",
-                    "email": "smith@pooteeweet.org"
-                },
-                {
-                    "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com"
-                },
-                {
-                    "name": "FriendsOfSymfony Community",
-                    "homepage": "https://github.com/friendsofsymfony/FOSRestBundle/contributors"
-                }
-            ],
-            "description": "This Bundle provides various tools to rapidly develop RESTful API's with Symfony",
-            "homepage": "http://friendsofsymfony.github.com",
-            "keywords": [
-                "rest"
-            ],
-            "support": {
-                "issues": "https://github.com/FriendsOfSymfony/FOSRestBundle/issues",
-                "source": "https://github.com/FriendsOfSymfony/FOSRestBundle/tree/3.5.0"
-            },
-            "time": "2023-01-06T15:33:47+00:00"
-        },
-        {
-            "name": "jms/metadata",
-            "version": "2.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/metadata.git",
-                "reference": "7ca240dcac0c655eb15933ee55736ccd2ea0d7a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/7ca240dcac0c655eb15933ee55736ccd2ea0d7a6",
-                "reference": "7ca240dcac0c655eb15933ee55736ccd2ea0d7a6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "doctrine/cache": "^1.0",
-                "doctrine/coding-standard": "^8.0",
-                "mikey179/vfsstream": "^1.6.7",
-                "phpunit/phpunit": "^8.5|^9.0",
-                "psr/container": "^1.0|^2.0",
-                "symfony/cache": "^3.1|^4.0|^5.0",
-                "symfony/dependency-injection": "^3.1|^4.0|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Metadata\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                },
-                {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                }
-            ],
-            "description": "Class/method/property metadata management in PHP",
-            "keywords": [
-                "annotations",
-                "metadata",
-                "xml",
-                "yaml"
-            ],
-            "support": {
-                "issues": "https://github.com/schmittjoh/metadata/issues",
-                "source": "https://github.com/schmittjoh/metadata/tree/2.8.0"
-            },
-            "time": "2023-02-15T13:44:18+00:00"
-        },
-        {
-            "name": "jms/serializer",
-            "version": "3.27.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "e8c812460d7b47b15bc0ccd78901276bd44ad452"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/e8c812460d7b47b15bc0ccd78901276bd44ad452",
-                "reference": "e8c812460d7b47b15bc0ccd78901276bd44ad452",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/annotations": "^1.13 || ^2.0",
-                "doctrine/instantiator": "^1.0.3 || ^2.0",
-                "doctrine/lexer": "^2.0 || ^3.0",
-                "jms/metadata": "^2.6",
-                "php": "^7.2||^8.0",
-                "phpstan/phpdoc-parser": "^0.4 || ^0.5 || ^1.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^8.1",
-                "doctrine/orm": "~2.1",
-                "doctrine/persistence": "^1.3.3|^2.0|^3.0",
-                "doctrine/phpcr-odm": "^1.3|^2.0",
-                "ext-pdo_sqlite": "*",
-                "jackalope/jackalope-doctrine-dbal": "^1.1.5",
-                "ocramius/proxy-manager": "^1.0|^2.0",
-                "phpbench/phpbench": "^1.0",
-                "phpstan/phpstan": "^1.0.2",
-                "phpunit/phpunit": "^8.5.21||^9.0||^10.0",
-                "psr/container": "^1.0|^2.0",
-                "symfony/dependency-injection": "^3.0|^4.0|^5.0|^6.0",
-                "symfony/expression-language": "^3.2|^4.0|^5.0|^6.0",
-                "symfony/filesystem": "^3.0|^4.0|^5.0|^6.0",
-                "symfony/form": "^3.0|^4.0|^5.0|^6.0",
-                "symfony/translation": "^3.0|^4.0|^5.0|^6.0",
-                "symfony/uid": "^5.1|^6.0",
-                "symfony/validator": "^3.1.9|^4.0|^5.0|^6.0",
-                "symfony/yaml": "^3.3|^4.0|^5.0|^6.0",
-                "twig/twig": "~1.34|~2.4|^3.0"
-            },
-            "suggest": {
-                "doctrine/collections": "Required if you like to use doctrine collection types as ArrayCollection.",
-                "symfony/cache": "Required if you like to use cache functionality.",
-                "symfony/uid": "Required if you'd like to serialize UID objects.",
-                "symfony/yaml": "Required if you'd like to use the YAML metadata format."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JMS\\Serializer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                },
-                {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                }
-            ],
-            "description": "Library for (de-)serializing data of any complexity; supports XML, and JSON.",
-            "homepage": "http://jmsyst.com/libs/serializer",
-            "keywords": [
-                "deserialization",
-                "jaxb",
-                "json",
-                "serialization",
-                "xml"
-            ],
-            "support": {
-                "issues": "https://github.com/schmittjoh/serializer/issues",
-                "source": "https://github.com/schmittjoh/serializer/tree/3.27.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/goetas",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-07-29T22:33:44+00:00"
-        },
-        {
-            "name": "jms/serializer-bundle",
-            "version": "5.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "3279738a958454793ca1e318a7dab6cfcff60124"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/3279738a958454793ca1e318a7dab6cfcff60124",
-                "reference": "3279738a958454793ca1e318a7dab6cfcff60124",
-                "shasum": ""
-            },
-            "require": {
-                "jms/metadata": "^2.5",
-                "jms/serializer": "^3.20",
-                "php": "^7.2 || ^8.0",
-                "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/framework-bundle": "^3.4 || ^4.0 || ^5.0 || ^6.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^8.1",
-                "doctrine/orm": "^2.4",
-                "phpunit/phpunit": "^8.0 || ^9.0",
-                "symfony/expression-language": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/finder": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/form": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/stopwatch": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/templating": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/twig-bundle": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/uid": "^5.1 || ^6.0",
-                "symfony/validator": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/yaml": "^3.4 || ^4.0 || ^5.0 || ^6.0"
-            },
-            "suggest": {
-                "symfony/expression-language": "Required for opcache preloading ^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "symfony/finder": "Required for cache warmup, supported versions ^3.4 || ^4.0 || ^5.0 || ^6.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JMS\\SerializerBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                },
-                {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                }
-            ],
-            "description": "Allows you to easily serialize, and deserialize data of any complexity",
-            "homepage": "http://jmsyst.com/bundles/JMSSerializerBundle",
-            "keywords": [
-                "deserialization",
-                "json",
-                "serialization",
-                "xml"
-            ],
-            "support": {
-                "issues": "https://github.com/schmittjoh/JMSSerializerBundle/issues",
-                "source": "https://github.com/schmittjoh/JMSSerializerBundle/tree/5.3.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/goetas",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-06-13T14:47:57+00:00"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -4264,7 +3834,6 @@
                 }
             ],
             "time": "2023-07-06T06:56:43+00:00"
-            "time": "2023-07-06T06:56:43+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -5085,7 +4654,6 @@
                 }
             ],
             "time": "2023-07-23T21:58:39+00:00"
-            "time": "2023-07-23T21:58:39+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -5203,7 +4771,6 @@
         {
             "name": "symfony/intl",
             "version": "v6.3.2",
-            "version": "v6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
@@ -5266,7 +4833,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/intl/tree/v6.3.2"
-                "source": "https://github.com/symfony/intl/tree/v6.3.2"
             },
             "funding": [
                 {
@@ -5282,7 +4848,6 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-20T07:43:09+00:00"
             "time": "2023-07-20T07:43:09+00:00"
         },
         {
@@ -5570,7 +5135,6 @@
                 "phpdocumentor/reflection-docblock": "<3.2.2",
                 "phpdocumentor/type-resolver": "<1.4.0",
                 "symfony/mailer": "<5.4",
-                "symfony/serializer": "<6.2.13|>=6.3,<6.3.2"
                 "symfony/serializer": "<6.2.13|>=6.3,<6.3.2"
             },
             "require-dev": {
@@ -6626,7 +6190,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/property-access/tree/v6.3.2"
-                "source": "https://github.com/symfony/property-access/tree/v6.3.2"
             },
             "funding": [
                 {
@@ -6642,7 +6205,6 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-13T15:26:11+00:00"
             "time": "2023-07-13T15:26:11+00:00"
         },
         {
@@ -6814,11 +6376,9 @@
         {
             "name": "symfony/runtime",
             "version": "v6.3.2",
-            "version": "v6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/runtime.git",
-                "reference": "d5c09493647a0c1a16e6c8da308098e840d1164f"
                 "reference": "d5c09493647a0c1a16e6c8da308098e840d1164f"
             },
             "dist": {
@@ -6875,7 +6435,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/runtime/tree/v6.3.2"
-                "source": "https://github.com/symfony/runtime/tree/v6.3.2"
             },
             "funding": [
                 {
@@ -6891,7 +6450,6 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-16T17:05:46+00:00"
             "time": "2023-07-16T17:05:46+00:00"
         },
         {
@@ -7092,17 +6650,13 @@
         {
             "name": "symfony/security-csrf",
             "version": "v6.3.2",
-            "version": "v6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-csrf.git",
                 "reference": "63d7b098c448cbddb46ea5eda33b68c1ece6eb5b"
-                "reference": "63d7b098c448cbddb46ea5eda33b68c1ece6eb5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-csrf/zipball/63d7b098c448cbddb46ea5eda33b68c1ece6eb5b",
-                "reference": "63d7b098c448cbddb46ea5eda33b68c1ece6eb5b",
                 "url": "https://api.github.com/repos/symfony/security-csrf/zipball/63d7b098c448cbddb46ea5eda33b68c1ece6eb5b",
                 "reference": "63d7b098c448cbddb46ea5eda33b68c1ece6eb5b",
                 "shasum": ""
@@ -7144,7 +6698,6 @@
             "homepage": "https://symfony.com",
             "support": {
                 "source": "https://github.com/symfony/security-csrf/tree/v6.3.2"
-                "source": "https://github.com/symfony/security-csrf/tree/v6.3.2"
             },
             "funding": [
                 {
@@ -7161,22 +6714,17 @@
                 }
             ],
             "time": "2023-07-05T08:41:27+00:00"
-            "time": "2023-07-05T08:41:27+00:00"
         },
         {
             "name": "symfony/security-http",
-            "version": "v6.3.2",
             "version": "v6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-http.git",
                 "reference": "04d6b868786a56c1fadc52b003fe5a4f9ab3f3d0"
-                "reference": "04d6b868786a56c1fadc52b003fe5a4f9ab3f3d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-http/zipball/04d6b868786a56c1fadc52b003fe5a4f9ab3f3d0",
-                "reference": "04d6b868786a56c1fadc52b003fe5a4f9ab3f3d0",
                 "url": "https://api.github.com/repos/symfony/security-http/zipball/04d6b868786a56c1fadc52b003fe5a4f9ab3f3d0",
                 "reference": "04d6b868786a56c1fadc52b003fe5a4f9ab3f3d0",
                 "shasum": ""
@@ -7252,7 +6800,6 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-13T14:29:38+00:00"
             "time": "2023-07-13T14:29:38+00:00"
         },
         {
@@ -8184,7 +7731,6 @@
                 }
             ],
             "time": "2023-07-26T17:39:03+00:00"
-            "time": "2023-07-26T17:39:03+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -8272,7 +7818,6 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v6.3.2",
             "version": "v6.3.2",
             "source": {
                 "type": "git",
@@ -8619,103 +8164,7 @@
             "time": "2023-01-04T12:46:15+00:00"
         },
         {
-            "name": "symfonycasts/verify-email-bundle",
-            "version": "v1.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SymfonyCasts/verify-email-bundle.git",
-                "reference": "eb7bc997f36ad872a0d56bf209fe37fed148b0a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/verify-email-bundle/zipball/eb7bc997f36ad872a0d56bf209fe37fed148b0a7",
-                "reference": "eb7bc997f36ad872a0d56bf209fe37fed148b0a7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.2.5",
-                "symfony/config": "^5.4 | ^6.0",
-                "symfony/dependency-injection": "^5.4 | ^6.0",
-                "symfony/deprecation-contracts": "^2.2 | ^3.0",
-                "symfony/http-kernel": "^5.4 | ^6.0",
-                "symfony/routing": "^5.4 | ^6.0"
-            },
-            "require-dev": {
-                "doctrine/orm": "^2.7",
-                "doctrine/persistence": "^2.0",
-                "symfony/framework-bundle": "^5.4 | ^6.0",
-                "symfony/phpunit-bridge": "^5.4 | ^6.0",
-                "vimeo/psalm": "^4.3"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SymfonyCasts\\Bundle\\VerifyEmail\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Simple, stylish Email Verification for Symfony",
-            "support": {
-                "issues": "https://github.com/SymfonyCasts/verify-email-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/verify-email-bundle/tree/v1.13.0"
-            },
-            "time": "2023-01-04T12:46:15+00:00"
-        },
-		
-        {
-            "name": "symfonycasts/verify-email-bundle",
-            "version": "v1.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SymfonyCasts/verify-email-bundle.git",
-                "reference": "eb7bc997f36ad872a0d56bf209fe37fed148b0a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/verify-email-bundle/zipball/eb7bc997f36ad872a0d56bf209fe37fed148b0a7",
-                "reference": "eb7bc997f36ad872a0d56bf209fe37fed148b0a7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.2.5",
-                "symfony/config": "^5.4 | ^6.0",
-                "symfony/dependency-injection": "^5.4 | ^6.0",
-                "symfony/deprecation-contracts": "^2.2 | ^3.0",
-                "symfony/http-kernel": "^5.4 | ^6.0",
-                "symfony/routing": "^5.4 | ^6.0"
-            },
-            "require-dev": {
-                "doctrine/orm": "^2.7",
-                "doctrine/persistence": "^2.0",
-                "symfony/framework-bundle": "^5.4 | ^6.0",
-                "symfony/phpunit-bridge": "^5.4 | ^6.0",
-                "vimeo/psalm": "^4.3"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SymfonyCasts\\Bundle\\VerifyEmail\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Simple, stylish Email Verification for Symfony",
-            "support": {
-                "issues": "https://github.com/SymfonyCasts/verify-email-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/verify-email-bundle/tree/v1.13.0"
-            },
-            "time": "2023-01-04T12:46:15+00:00"
-        },
-        {
             "name": "twig/extra-bundle",
-            "version": "v3.7.0",
             "version": "v3.7.0",
             "source": {
                 "type": "git",
@@ -8979,7 +8428,6 @@
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "^5.0"
-                "symfony/phpunit-bridge": "^5.0"
             },
             "type": "library",
             "extra": {
@@ -9019,153 +8467,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "nikic/php-parser",
-            "version": "v4.16.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "19526a33fb561ef417e822e85f08a00db4059c17"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/19526a33fb561ef417e822e85f08a00db4059c17",
-                "reference": "19526a33fb561ef417e822e85f08a00db4059c17",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "ircmaxell/php-yacc": "^0.0.7",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "William Durand",
-                    "email": "will+git@drnd.me"
-                }
-            ],
-            "description": "JSONP callback validator.",
-            "support": {
-                "issues": "https://github.com/willdurand/JsonpCallbackValidator/issues",
-                "source": "https://github.com/willdurand/JsonpCallbackValidator/tree/v2.0.0"
-            },
-            "time": "2022-01-30T20:33:09+00:00"
-        },
-        {
-            "name": "symfony/maker-bundle",
-            "version": "v1.50.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "a1733f849b999460c308e66f6392fb09b621fa86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/a1733f849b999460c308e66f6392fb09b621fa86",
-                "reference": "a1733f849b999460c308e66f6392fb09b621fa86",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "^2.0",
-                "nikic/php-parser": "^4.11",
-                "php": ">=8.0",
-                "symfony/config": "^5.4.7|^6.0",
-                "symfony/console": "^5.4.7|^6.0",
-                "symfony/dependency-injection": "^5.4.7|^6.0",
-                "symfony/deprecation-contracts": "^2.2|^3",
-                "symfony/filesystem": "^5.4.7|^6.0",
-                "symfony/finder": "^5.4.3|^6.0",
-                "symfony/framework-bundle": "^5.4.7|^6.0",
-                "symfony/http-kernel": "^5.4.7|^6.0",
-                "symfony/process": "^5.4.7|^6.0"
-            },
-            "conflict": {
-                "doctrine/doctrine-bundle": "<2.4",
-                "doctrine/orm": "<2.10",
-                "symfony/doctrine-bridge": "<5.4"
-            },
-            "require-dev": {
-                "composer/semver": "^3.0",
-                "doctrine/doctrine-bundle": "^2.4",
-                "doctrine/orm": "^2.10.0",
-                "symfony/http-client": "^5.4.7|^6.0",
-                "symfony/phpunit-bridge": "^5.4.17|^6.0",
-                "symfony/polyfill-php80": "^1.16.0",
-                "symfony/security-core": "^5.4.7|^6.0",
-                "symfony/yaml": "^5.4.3|^6.0",
-                "twig/twig": "^2.0|^3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Bundle\\MakerBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Maker helps you create empty commands, controllers, form classes, tests and more so you can forget about writing boilerplate code.",
-            "homepage": "https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html",
-            "keywords": [
-                "accept",
-                "content",
-                "format",
-                "header",
-                "negotiation"
-            ],
-            "support": {
-                "issues": "https://github.com/willdurand/Negotiation/issues",
-                "source": "https://github.com/willdurand/Negotiation/tree/3.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-07-10T18:21:57+00:00"
-        },
         {
             "name": "symfony/web-profiler-bundle",
             "version": "v6.3.2",
@@ -9230,7 +8531,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/web-profiler-bundle/tree/v6.3.2"
-                "source": "https://github.com/symfony/web-profiler-bundle/tree/v6.3.2"
             },
             "funding": [
                 {
@@ -9246,7 +8546,6 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-19T20:17:28+00:00"
             "time": "2023-07-19T20:17:28+00:00"
         }
     ],
