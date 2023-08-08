@@ -7,8 +7,11 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CpuRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ApiResource]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 
 #[ORM\Entity(repositoryClass: CpuRepository::class)]
 class Cpu

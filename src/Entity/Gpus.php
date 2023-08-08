@@ -4,7 +4,8 @@ namespace App\Entity;
 
 use App\Repository\GpusRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 #[ORM\Entity(repositoryClass: GpusRepository::class)]
 class Gpus
 {

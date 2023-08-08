@@ -6,10 +6,12 @@ use ApiPlatform\Metadata\ApiResource;
 
 use App\Repository\CpuCoolerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: CpuCoolerRepository::class)]
 #[ApiResource]
-
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class CpuCooler
 {
     #[ORM\Id]

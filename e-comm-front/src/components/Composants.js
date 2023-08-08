@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { search } from 'core-js/fn/symbol';
 
 export default function Composants() {
   const [data, setData] = useState([]);
   const [choix, setChoix] = useState(0);
   const [url, setUrl] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleChange = event => {
+    setMessage(event.target.value);
+
+    console.log('value is:', event.target.value);
+  };
 
   useEffect(() => {
     fetchInfo();
   }, [url]);
 
   const gpu = () => {
-    setChoix(1);
-    setUrl('http://localhost:8000/api/gpu');
+    setChoix("gpus");
+    setUrl('http://localhost:8000/api/gpus?page=1&name=');
     console.log('gpu');
   };
 
   const cpu = () => {
-    setChoix(2);
-    setUrl('http://localhost:8000/api/cpu');
+    setChoix("cpus");
+    setUrl('http://localhost:8000/api/cpus?page=1&name=');
     console.log('cpu');
   };
 
@@ -27,14 +35,27 @@ export default function Composants() {
     axios
       .get(url)
       .then((res) => {
-        setData(res.data);
+        setData(res.data['hydra:member']);
+        console.log(res.data['hydra:member'])
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
   };
 
-  if (choix === 0) {
+      function search(a){
+        console.log("search" + a)
+        axios
+        .get(`http://localhost:8000/api/${choix}?page=1&name=${a}`)
+        .then((res) => {
+          setData(res.data['hydra:member']);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+        
+      }
+  if (choix === "cpu") {
     return (
       <div>
         <button type="button" onClick={cpu}>
@@ -55,6 +76,17 @@ export default function Composants() {
         <button type="button" onClick={gpu}>
           gpu
         </button>
+        <input 
+        type="text"
+        id="message"
+        name="message"
+        onChange={handleChange}
+        value={message}
+        onKeyUp={(e) => search(message)}
+        >
+          
+
+        </input>
         <center>
           {data.map((dataObj) => {
             return (
