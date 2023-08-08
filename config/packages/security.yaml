@@ -16,6 +16,9 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+        admin:
+            pattern: ^/admin
+            http_basic: ~
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
