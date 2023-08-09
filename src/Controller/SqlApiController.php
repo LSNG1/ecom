@@ -303,7 +303,7 @@ class SqlApiController extends AbstractController
         return $this->json($data);
     }
     #[Route('/user', name: 'tamere')]
-    public function new(Request $request, EntityManagerInterface $entityManager)
+    public function test(Request $request, EntityManagerInterface $entityManager)
     {
         // creates a task object and initializes some data for this example
         $task = new User();
@@ -333,4 +333,41 @@ class SqlApiController extends AbstractController
                 'form' => $form,
         ]);
     }
+
+    #[Route('/register', name: 'register', methods: ['get'])]
+    public function new(Request $request, EntityManagerInterface $entityManager)
+    {
+    
+        // $data = $request->getContent();
+        // $data = json_decode($data, true);
+        // dd($data);
+        // return $data;
+
+        $task = new User();
+
+        // dd($request);
+        // dd($task);
+
+        $form = $this->createFormBuilder($task)
+            ->add('Email', TextType::class)
+            ->add('password', textType::class)
+            ->add('save', SubmitType::class, ['label' => 'Create User'])
+            ->getForm();
+
+        dd($form);
+
+        $form->handleRequest($request);
+
+    
+    
+        // $data = new User();
+        // $data = $request->getContent();
+        // dd($data);
+        // $data = json_decode($data, true);
+        // return $data;
+    
+    
+        // dd($*
+    }
+    
 }
