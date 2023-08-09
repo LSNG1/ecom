@@ -67,20 +67,9 @@ export class Register extends Component {
     this.setState({ user });
   }
 
-  
-
-  
-  // selectCountry (val) {
-  //   this.setState({ country: val });
-  // }
-
-  // selectRegion (val) {
-  //   this.setState({ region: val });
-  // }
-
   handleSubmit(event) {
     event.preventDefault();
-	console.log(this.state.user);
+	
 
     let regex_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     let regex_country = /^[A-Za-z]+$/;
@@ -107,29 +96,19 @@ export class Register extends Component {
     // 	alert("valid lastname")
     // }
 
+    console.log(this.state);
+    JSON.stringify(this.state);
 
+    console.log(this.state);
 
-    // axios.post('http://localhost:8000/register', {name: "XD"},
-    // {
-    //   headers: {
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Content-Type': 'application/json',
-    //   }
-    // })
-
+    
 
     alert(typeof(this.state.user.country) );
 
 
     axios({
-      method: 'POST',
-	    maxBodyLength: Infinity,
-    mode: "cors",
-
-      url: 'https://127.0.0.1:8000/api/users',
-	    headers: { 
-    'Content-Type': 'application/json'
-  },
+      method: 'get',
+      url: 'http://localhost:8000/api/register',
       data: this.state.user
     })
     .then((response) => {
@@ -145,10 +124,6 @@ export class Register extends Component {
         console.log(error);
       }
     });
-    // .then(window.location.href = 'http://localhost:8000/register');
-
-
-    // .then(redirect('https://localhost:8000/register'));
   }
 
   render() {
@@ -167,7 +142,7 @@ export class Register extends Component {
         <input type="text" value={this.state.user.name} onChange={this.handleNameChange} />
         </label>
         <label>
-          Prénom:
+          PrÃ©nom:
         <input type="text" value={this.state.user.lastname} onChange={this.handleLastNameChange} />
         </label>
         <CountryDropdown
@@ -178,11 +153,6 @@ export class Register extends Component {
           country={this.state.user.country}
           value={this.state.user.region}
           onChange={(val) => this.handleRegionChange(val)} />
-      
-        {/* <label>
-          Pays:
-        <input type="text" value={this.state.user.country} onChange={this.handleCountryChange} />
-        </label> */}
         <label>
           Date de naissance:
         <input type="date" value={this.state.user.birthdate} onChange={this.handleBirthdateChange} />
