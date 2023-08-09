@@ -67,17 +67,6 @@ export class Register extends Component {
     this.setState({ user });
   }
 
-  
-
-  
-  // selectCountry (val) {
-  //   this.setState({ country: val });
-  // }
-
-  // selectRegion (val) {
-  //   this.setState({ region: val });
-  // }
-
   handleSubmit(event) {
     event.preventDefault();
 	
@@ -107,17 +96,6 @@ export class Register extends Component {
     // 	alert("valid lastname")
     // }
 
-
-
-    // axios.post('http://localhost:8000/register', {name: "XD"},
-    // {
-    //   headers: {
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Content-Type': 'application/json',
-    //   }
-    // })
-
-
     console.log(this.state);
     JSON.stringify(this.state);
 
@@ -133,7 +111,6 @@ export class Register extends Component {
       url: 'http://localhost:8000/api/register',
       data: this.state.user
     })
-    // .then(window.location.href = 'http://localhost:8000/api/register')
     .then((response) => {
       console.log(response);
     })
@@ -147,10 +124,6 @@ export class Register extends Component {
         console.log(error);
       }
     });
-    // .then(window.location.href = 'http://localhost:8000/register');
-
-
-    // .then(redirect('https://localhost:8000/register'));
   }
 
   render() {
@@ -180,11 +153,6 @@ export class Register extends Component {
           country={this.state.user.country}
           value={this.state.user.region}
           onChange={(val) => this.handleRegionChange(val)} />
-      
-        {/* <label>
-          Pays:
-        <input type="text" value={this.state.user.country} onChange={this.handleCountryChange} />
-        </label> */}
         <label>
           Date de naissance:
         <input type="date" value={this.state.user.birthdate} onChange={this.handleBirthdateChange} />
