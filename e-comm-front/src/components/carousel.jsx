@@ -14,32 +14,26 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
     {
-        label: "Le jeu Starfield offert avec l'achat d'un processeur AMD",
         imgPath:
             'https://media.topachat.com/media/s1000/649be289cb42ac1f062be67d.webp',
     },
     {
-        label: "La puissance Nvidia entre vos mains",
         imgPath:
             'https://media.topachat.com/media/s1000/64c77d9e642f572b251f3ddf.webp',
     },
     {
-        label: "Moins d'écran de chargement mais plus de chargement de stockage!",
         imgPath:
             'https://media.ldlc.com/encart/p/21462_b.jpg',
     },
     {
-        label: "Profitez de vos jeux avec une qualité sublime",
         imgPath:
             'https://media.ldlc.com/encart/p/21501_b.jpg',
     },
     {
-        label: "Splendeur et performance by Aorus",
         imgPath:
             'https://www.aorus.com/image/banner/GOELITE-1690280290.jpg',
     },
     {
-        label: "Dick's Fapper est là pour t'aider à monter ton pc",
         imgPath:
             'https://media.topachat.com/media/s1000/63639dcc3b1f41344e0c11a3.webp',
     },

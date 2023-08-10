@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import "./navbar.css"
 import logo from "../assets/logo.png"
 import profil from "../assets/Web capture_3-8-2023_121450_wsl.localhost.jpeg"
-//
 // Mui Framework
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -60,27 +59,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export const Navbar = () => {
   return (
     <div className='navbar'>
-      <Link to="/"><img src={logo} alt="logo-fap" width={50} /></Link>
+      <Link to="/"><img src={logo} alt="logo-fap" width={75} className='logo' style={{marginLeft: 2 + 'em', marginRight: 2 + 'em', marginTop: 1 + 'em', marginBottom: 1 + 'em'}} /></Link>
       <Box sx={{ flexGrow: 1 }}>
         <Search>
           <SearchIconWrapper>
-            <SearchIcon />
+            <SearchIcon  style={{color: 'white'}}/>
           </SearchIconWrapper>
           <StyledInputBase
+          style={{color: 'white'}}
             placeholder="Search…"
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
-        <AppBar position="static">
+        <AppBar className='bl' position="static">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
               <div class="button-container">
                 <div class="button-wrapper">
                   <Link to="/Ordinateur"> <button>Ordinateur</button></Link>
@@ -92,16 +84,13 @@ export const Navbar = () => {
                   <Link to="/Périphérique"> <button>Périphérique</button></Link>
                 </div>
               </div>
-
-            </IconButton>
-
           </Toolbar>
         </AppBar>
       </Box>
       <div className='links'>
-      <Link to="/Profil"><img src={profil} alt="logo-profil" width={50} /></Link>
+      <Link to="/Profil"><img src={profil} alt="logo-profil" width={50} style={{marginLeft: 1 + 'em', marginTop: 1 + 'em'}} /></Link>
       <Link to="/Cart">
-          <ShoppingCart size={32} />
+          <ShoppingCart size={50} style={{marginLeft: 1 + 'em', marginBottom: 1 + 'em'}} />
         </Link>
       </div>
     </div>
