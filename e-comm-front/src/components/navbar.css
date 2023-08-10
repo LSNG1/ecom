@@ -1,63 +1,54 @@
 .navbar {
-    width: 100%;
-    height: 80px;
-    background-color: rgb(19, 19, 19);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: fixed;
-  }
+  width: 100%;
+  height: 80px;
+  background-color: rgb(19, 19, 19);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+}
 
-  .links {
-    margin-right: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.links {
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .links a {
-    text-decoration: none;
-    color: white;
-    margin-left: 20px;
-    font-size: 25px;
-  }
+.links a {
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+  font-size: 25px;
+}
 
-    .button-container {
-      display: flex;
-      /* justify-content: center; */
-      align-items: center;
-      /* Adjust this value as needed */
-    }
+.button-container {
+  display: flex;
+  align-items: center;
+}
 
-    .button-wrapper {
-      margin-left: 60%;
-      /* Add spacing between button divs */
-    }
+.button-wrapper {
+  margin-left: 60%;
+  /* border-radius: 50px; */
+}
 
-    .button-wrapper button {
-      /* Add any specific styling for the buttons here */
-    background-color: grey;
-    }
-    .button-wrapper button:hover{
-      background-color: rgb(19, 19, 19);
-    }
+.button-wrapper button {
+  background-color: grey;
+}
 
-        .button-container {
-          display: flex;
-          gap: 20px;
-          /* Adjust the gap between buttons as needed */
-        }
+.button-wrapper button:hover {
+  background-color: rgb(19, 19, 19);
+  width: 125%;
+  transition: 0.3s ease-in;
+  text-decoration: double;
+  border: solid  grey;
+}
 
-        .button-wrapper {
-          border-radius: 8px;
-          /* Apply border radius */
-          /* Hide any overflowing content */
-        }
-
-        .button-wrapper button {
-          width: 100%;
-          padding: 10px 20px;
-          color: #fff;
-          border: none;
-          cursor: pointer;
-        }
+.button-wrapper button {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border: solid blue;
+  border-radius: 50px;
+}
