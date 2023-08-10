@@ -5,7 +5,7 @@ import Payment from "../assets/image.png"
 import { InstagramLogo } from "phosphor-react";
 import { TwitterLogo } from "phosphor-react";
 import { LinkedinLogo } from "phosphor-react";
-import "./navbar.css";
+import "./footer.css";
 
 const Footer = () => {
   return (
