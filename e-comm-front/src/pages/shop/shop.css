@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
-    background-color: rgb(189, 42, 123);
+    background-color: #DD8F8F;
     margin-bottom: 3%;
   }
 
@@ -34,12 +34,21 @@
 
   .product:hover {
     transition: 0.3s ease-in;
-    cursor: pointer;
+    cursor: pointer;  
   }
-
+a:hover{
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+}
+a:visited:not()
+{
+  text-decoration: none;
+}
   .addToCartBttn {
     background-color: transparent;
-    border: 2px solid rgb(19, 19, 19);
+    border: 2px solid #E8DDCA;
     min-width: 100px;
     padding-left: 10px;
     padding-right: 10px;
@@ -49,12 +58,7 @@
   }
 
   .addToCartBttn:hover {
-    background-color: rgb(19, 19, 19);
-    color: white;
+    background-color: #18206F;
+    color: #E8DDCA;
     cursor: pointer;
-  }
-
-  .Carousel{
-    margin-top:10% ;
-    margin-left: 35%;
   }

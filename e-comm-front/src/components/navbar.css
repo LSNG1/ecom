@@ -1,19 +1,12 @@
 .navbar {
   width: 100%;
   height: 80px;
-<<<<<<< HEAD
   background-color: #18206F;
-=======
-  background-color: rgb(19, 19, 19);
->>>>>>> refs/remotes/origin/visuel
   display: flex;
   justify-content: flex-end;
   align-items: center;
   position: fixed;
-<<<<<<< HEAD
   padding: 2% 0;
-=======
->>>>>>> refs/remotes/origin/visuel
 }
 
 .links {
@@ -32,23 +25,14 @@
 
 .button-container {
   display: flex;
-<<<<<<< HEAD
-  /* justify-content: center; */
   align-items: center;
-  /* Adjust this value as needed */
-=======
-  align-items: center;
->>>>>>> refs/remotes/origin/visuel
 }
 
 .button-wrapper {
   margin-left: 60%;
-<<<<<<< HEAD
-  /* Add spacing between button divs */
 }
 
 .button-wrapper button {
-  /* Add any specific styling for the buttons here */
   background-color: #E8DDCA;
 }
 .button-wrapper button:hover {
@@ -58,19 +42,16 @@
 .button-container {
   display: flex;
   gap: 20px;
-  /* Adjust the gap between buttons as needed */
 }
 
 .button-wrapper {
   border-radius: 8px;
-  /* Apply border radius */
-  /* Hide any overflowing content */
 }
 
 .button-wrapper button {
   width: 100%;
   padding: 10px 20px;
-  color: #fff;
+  color: #000000;
   border: none;
   cursor: pointer;
 }
@@ -80,20 +61,12 @@
 }
 .bl{
   background-color: #2b3488 !important;
-=======
-  /* border-radius: 50px; */
-}
-
-.button-wrapper button {
-  background-color: grey;
 }
 
 .button-wrapper button:hover {
-  background-color: rgb(19, 19, 19);
   width: 125%;
   transition: 0.3s ease-in;
   text-decoration: double;
-  border: solid  grey;
 }
 
 .button-wrapper button {
@@ -101,7 +74,8 @@
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  border: solid blue;
   border-radius: 50px;
->>>>>>> refs/remotes/origin/visuel
+}
+.button-container{
+  margin-left: 10%;
 }
