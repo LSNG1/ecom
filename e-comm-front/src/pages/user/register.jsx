@@ -107,8 +107,8 @@ export class Register extends Component {
 
 
     axios({
-      method: 'get',
-      url: 'http://localhost:8000/api/register',
+      method: 'post',
+      url: 'https://localhost:8000/api/users',
       data: this.state.user
     })
     .then((response) => {
