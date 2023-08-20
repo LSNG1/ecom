@@ -21,6 +21,8 @@ class Box
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+	#[ORM\Column(type: 'string', length: 255, nullable: true)]
+	private ?string $status;
 
 	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
 	private ?int $stock = null;
@@ -155,6 +157,18 @@ class Box
 	public function setStock(?int $stock): static
 	{
 		$this->stock = $stock;
+
+		return $this;
+	}
+
+	public function getStatus(): ?string
+	{
+		return $this->status;
+	}
+	
+	public function setStatus(?string $status): static
+	{
+		$this->status = $status;
 
 		return $this;
 	}

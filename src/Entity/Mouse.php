@@ -19,6 +19,9 @@ class Mouse
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+	#[ORM\Column(type: 'string', length: 255, nullable: true)]
+	private ?string $status;
+
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
@@ -137,6 +140,18 @@ class Mouse
 	public function setStock(?int $stock): static
 	{
 		$this->stock = $stock;
+
+		return $this;
+	}
+
+	public function getStatus(): ?string
+	{
+		return $this->status;
+	}
+
+	public function setStatus(?string $status): static
+	{
+		$this->status = $status;
 
 		return $this;
 	}
