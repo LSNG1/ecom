@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\HeadphonesRepository;
+
+use App\Repository\HardDriveRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+
 
 #[ApiResource]
 #[ORM\Entity(repositoryClass: HeadphonesRepository::class)]
@@ -20,6 +23,9 @@ class Headphones
 
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
+
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
+	private ?int $stock = null;
 
     #[ORM\Column(length: 255)]
     private ?string $type = null;
@@ -139,4 +145,16 @@ class Headphones
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

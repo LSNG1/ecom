@@ -24,6 +24,9 @@ class Gpu
     #[ORM\Column]
     private ?float $price = null;
 
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
+	private ?int $stock = null;
+
     #[ORM\Column(length: 1024, nullable: true)]
     private ?string $chipset = null;
 
@@ -142,4 +145,16 @@ class Gpu
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

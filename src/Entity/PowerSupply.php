@@ -22,6 +22,10 @@ class PowerSupply
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]
+	private ?int $stock = null;
+
+
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
@@ -125,4 +129,16 @@ class PowerSupply
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

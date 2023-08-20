@@ -21,6 +21,10 @@ class Box
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
+	private ?int $stock = null;
+
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
@@ -142,4 +146,16 @@ class Box
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

@@ -24,6 +24,9 @@ class Cpu
     #[ORM\Column]
     private ?int $price = null;
 
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
+	private ?int $stock = null;
+
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $coreCount = null;
 
@@ -142,4 +145,16 @@ class Cpu
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

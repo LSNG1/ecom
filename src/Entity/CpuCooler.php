@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 
-use App\Repository\CpuCoolerRepository;
+
+use App\Repository\CpuRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 
 #[ORM\Entity(repositoryClass: CpuCoolerRepository::class)]
 #[ApiResource]
@@ -22,6 +25,9 @@ class CpuCooler
 
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
+
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
+	private ?int $stock = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $rpm = null;
@@ -111,4 +117,16 @@ class CpuCooler
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

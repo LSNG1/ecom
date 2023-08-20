@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MemoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use Doctrine\DBAL\Types\Types;
 
 #[ApiResource]
 #[ORM\Entity(repositoryClass: MemoryRepository::class)]
@@ -20,6 +21,9 @@ class Memory
 
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
+
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]
+	private ?int $stock = null;
 
     #[ORM\Column(length: 255)]
     private ?string $speed = null;
@@ -139,4 +143,16 @@ class Memory
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }

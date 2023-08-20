@@ -22,6 +22,9 @@ class HardDrive
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
+	#[ORM\Column(type: Types::INTEGER, nullable: true)]  
+	private ?int $stock = null;
+
     #[ORM\Column]
     private ?int $capacity = null;
 
@@ -140,4 +143,16 @@ class HardDrive
 
         return $this;
     }
+
+	public function getStock(): ?int
+	{
+		return $this->stock;
+	}
+
+	public function setStock(?int $stock): static
+	{
+		$this->stock = $stock;
+
+		return $this;
+	}
 }
