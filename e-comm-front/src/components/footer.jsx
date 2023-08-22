@@ -6,8 +6,10 @@ import { InstagramLogo } from "phosphor-react";
 import { TwitterLogo } from "phosphor-react";
 import { LinkedinLogo } from "phosphor-react";
 // // phosphore icons
-// import ReactDOM from "react-dom";
-// import { PaypalLogo } from "@phosphor-icons/react";
+import { PaypalLogo } from "@phosphor-icons/react";
+import { CreditCard } from "@phosphor-icons/react";
+import { NumberThree } from "@phosphor-icons/react";
+import { X } from "@phosphor-icons/react";
 import "./footer.css";
 
 const Footer = () => {
@@ -17,12 +19,14 @@ const Footer = () => {
       <p>&copy; {new Date().getFullYear()} LigmaBalls.Inc</p>
       <Link to="/livraison">Livraison</Link>
       <Link to="/Contact-Us">Contact Us</Link>
-      <img src={Payment} alt="moyens de payements" />
+      {/* <img src={Payment} alt="moyens de payements" width={350} /> */}
       <div className="social-icons">
         <div class="réseau"><InstagramLogo size={24} /></div>
         <div class="réseau"><TwitterLogo size={24} /></div>
         <div class="réseau"><LinkedinLogo size={24} /></div>
-        {/* <PaypalLogo size={32} weight="light" /> */}
+        <PaypalLogo size={32} weight="light" />
+        <CreditCard size={32} weight="light" />
+        <p><X size={10} weight="bold" /><NumberThree size={15} weight="bold" /></p>
         
       </div>
 

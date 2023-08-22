@@ -1,10 +1,15 @@
+
 .App {
   text-align: center;
   background-color: #E8DDCA;
 }
 
+.navbar {
+  margin-bottom: 150px;
+}
+
 .App-logo {
-  height: 40vmin;
+  height: 0vmin;
   pointer-events: none;
 }
 
