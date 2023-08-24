@@ -108,7 +108,7 @@ export class Register extends Component {
 
     axios({
       method: 'post',
-      url: 'https://localhost:8000/api/users',
+      url: 'http://localhost:8000/api/users',
       data: this.state.user
     })
     .then((response) => {
@@ -124,6 +124,15 @@ export class Register extends Component {
         console.log(error);
       }
     });
+
+    fetch('http://localhost:8000/api/user_carts', {
+    method: 'POST',
+    headers: {
+        'accept': 'application/ld+json',
+        'Content-Type': 'application/ld+json'
+    },
+    body: '{\n  "idUser": 1,\n  "items": \n    ""\n  \n}'
+});
   }
 
   render() {

@@ -7,6 +7,7 @@ import { ShopContextProvider } from "./context/shop-context";
 import { Register } from "./pages/user/register";
 import { Login } from "./pages/user/login";
 import { AdminGuesser, ResourceGuesser } from "@api-platform/admin";
+import Composants from "./components/Composants";
 
 import { Admin } from "./pages/admin/admin";
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/produits" element={<Composants/>}/>
             <Route
               path="/admin/*"
               element={

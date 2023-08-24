@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GpuRepository;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,6 +13,7 @@ use ApiPlatform\Metadata\ApiResource;
 #[ApiResource]
 
 #[ORM\Entity(repositoryClass: GpuRepository::class)]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class Gpu
 {
     #[ORM\Id]
@@ -21,7 +24,7 @@ class Gpu
     #[ORM\Column(length: 1024)]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
     private ?float $price = null;
 
 	#[ORM\Column(type: 'string', length: 255, nullable: true)]

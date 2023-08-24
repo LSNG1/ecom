@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\PowerSupplyRepository;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 
 #[ApiResource]
 #[ORM\Entity(repositoryClass: PowerSupplyRepository::class)]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class PowerSupply
 {
     #[ORM\Id]

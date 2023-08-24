@@ -43,7 +43,7 @@ class Cpu
     private ?string $tdp = null;
 
     #[ORM\Column]
-    private ?int $graphics = null;
+    private ?string $graphics = null;
 
     #[ORM\Column]
     private ?bool $smt = null;
@@ -125,12 +125,12 @@ class Cpu
         return $this;
     }
 
-    public function getGraphics(): ?int
+    public function getGraphics(): ?string
     {
         return $this->graphics;
     }
 
-    public function setGraphics(int $graphics): static
+    public function setGraphics(string $graphics): static
     {
         $this->graphics = $graphics;
 
