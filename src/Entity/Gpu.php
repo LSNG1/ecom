@@ -21,7 +21,7 @@ class Gpu
     #[ORM\Column(length: 1024)]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $price = null;
 
 	#[ORM\Column(type: 'string', length: 255, nullable: true)]

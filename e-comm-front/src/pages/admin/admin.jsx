@@ -24,11 +24,11 @@ export const Admin = () => (
     </div>
 
     <AdminGuesser dataProvider={dataProvider} schemaAnalyzer={schemaAnalyzer}>
-      <ResourceGuesser name={"admin/boxes"} />
+      <ResourceGuesser name={"boxes"} />
       <ResourceGuesser name={"cpus"} />
       <ResourceGuesser name={"cpu_coolers"} />
       <ResourceGuesser name={"gpus"} />
-      <ResourceGuesser name={"admin/hard_drives"} />
+      <ResourceGuesser name={"hard_drives"} />
       <ResourceGuesser name={"headphones"} />
       <ResourceGuesser name={"memories"} />
       <ResourceGuesser name={"motherboards"} />

@@ -21,7 +21,7 @@ class Cpu
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
 	#[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -36,13 +36,13 @@ class Cpu
     #[ORM\Column]
     private ?int $coreClock = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
     private ?int $boostClock = null;
 
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $tdp = null;
 
-    #[ORM\Column]
+	#[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?int $graphics = null;
 
     #[ORM\Column]
