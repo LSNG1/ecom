@@ -71,9 +71,6 @@ export class Register extends Component {
 
     const hashedPassword = bcrypt.hashSync(this.state.user.password, saltRounds);
     const userWithHashedPassword = { ...this.state.user, password: hashedPassword };
-
-    // Rest of your validation code
-
 	//     let regex_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     // let regex_country = /^[A-Za-z]+$/;
     // let regex_name = /[A-Za-z]/;
