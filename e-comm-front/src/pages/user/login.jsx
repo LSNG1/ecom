@@ -30,11 +30,11 @@ export class Login extends Component {
 
     axios({
       method: 'post',
-      url: 'https://localhost:8000/api/login', // Change this URL to your login endpoint
+      url: 'https://localhost:8000/api/login',
       data: { email, password }
     })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.token);
       })
       .catch((error) => {
         console.log(error);
