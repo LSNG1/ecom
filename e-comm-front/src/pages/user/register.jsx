@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
-
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import axios from 'axios';
-import { redirect } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
+
+const saltRounds = 10;
 
 export class Register extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export class Register extends Component {
         country: '',
         region: '',
         birthdate: ''
-      },
+      }
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -28,7 +29,6 @@ export class Register extends Component {
     this.handleBirthdateChange = this.handleBirthdateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRegionChange = this.handleRegionChange.bind(this);
-
   }
 
   handleEmailChange(event) {
@@ -50,15 +50,14 @@ export class Register extends Component {
     const user = { ...this.state.user, lastname: event.target.value };
     this.setState({ user });
   }
-  
-  
+
   handleBirthdateChange(event) {
     const user = { ...this.state.user, birthdate: event.target.value };
     this.setState({ user });
   }
-  
-  handleCountryChange(val) {  
-    const user = { ...this.state.user, country: val };
+
+  handleCountryChange(val) {
+    const user = { ...this.state.user, country: val, region: '' };
     this.setState({ user });
   }
 
@@ -69,11 +68,15 @@ export class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-	
 
-    let regex_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    let regex_country = /^[A-Za-z]+$/;
-    let regex_name = /[A-Za-z]/;
+    const hashedPassword = bcrypt.hashSync(this.state.user.password, saltRounds);
+    const userWithHashedPassword = { ...this.state.user, password: hashedPassword };
+
+    // Rest of your validation code
+
+	//     let regex_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    // let regex_country = /^[A-Za-z]+$/;
+    // let regex_name = /[A-Za-z]/;
 
     // if (!regex_email.test(this.state.user.email)) {
     //   alert("Invalid email address!");
@@ -96,34 +99,26 @@ export class Register extends Component {
     // 	alert("valid lastname")
     // }
 
-    console.log(this.state);
-    JSON.stringify(this.state);
-
-    console.log(this.state);
-
-    
-
-    alert(typeof(this.state.user.country) );
-
+    console.log(userWithHashedPassword);
 
     axios({
       method: 'post',
       url: 'https://localhost:8000/api/users',
-      data: this.state.user
+      data: userWithHashedPassword
     })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      if (error.response) {
-        console.log(error.response);
-        console.log("server responded");
-      } else if (error.request) {
-        console.log("network error");
-      } else {
-        console.log(error);
-      }
-    });
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log('server responded');
+        } else if (error.request) {
+          console.log('network error');
+        } else {
+          console.log(error);
+        }
+      });
   }
 
   render() {
