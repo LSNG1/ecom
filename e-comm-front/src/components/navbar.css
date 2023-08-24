@@ -1,22 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
 .navbar {
-    width: 100%;
-    height: 80px;
-    background-color: rgb(19, 19, 19);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  height: 60px;
+	background-color: #18206F;
+  position: relative;
+  z-index: 7000;
+}
+
+.logo {
+}
+
+.menu-icon {
+  display: none;
+}
+
+.nav-elements {
+}
+
+.nav-elements ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.nav-elements ul li:not(:last-child) {
+  margin-right: 60px;
+}
+
+.nav-elements ul a {
+  font-size: 16px;
+  font-weight: 400;
+  color: #E8DDCA;
+  text-decoration: none;
+}
+
+.nav-elements ul a.active {
+  color: #E8DDCA;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-elements ul a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #E8DDCA;
+}
+
+@media (max-width: 768px) {
+  .nav-elements ul li:not(:last-child) {
+    margin-right: 30px;
   }
-  
-  .links {
-    margin-right: 50px;
+}
+
+@media (max-width: 600px) {
+  .nav-elements ul a {
+    color: #000000;
+  }
+  .nav-elements ul a.active {
+    color: #000000;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-elements {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #E8DDCA;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+  }
+
+  .nav-elements ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
-  
-  .links a {
-    text-decoration: none;
-    color: white;
-    margin-left: 20px;
-    font-size: 25px;
+
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
   }
+}

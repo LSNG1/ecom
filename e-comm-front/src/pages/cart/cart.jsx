@@ -16,7 +16,7 @@ const navigate = useNavigate();
         <div className='cartItems'>
           {PRODUCTS.map((product) => {
             if(cartItems[product.id] !== 0 ){
-              return <CartItem data={product} />
+              return <CartItem key={product.id} data={product} />
             }
           })}
         </div>
