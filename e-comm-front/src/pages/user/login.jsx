@@ -30,7 +30,7 @@ export class Login extends Component {
 
     axios({
       method: 'post',
-      url: 'https://localhost:8000/api/login',
+      url: 'http://localhost:8000/api/login',
       data: { email, password }
     })
       .then((response) => {
