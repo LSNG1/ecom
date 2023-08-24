@@ -3,7 +3,14 @@
   text-align: center;
   background-color: #E8DDCA;
 }
-
+body{
+  margin: 0;
+  padding: 0;
+}
+html {
+  margin: 0;
+  padding: 0;
+}
 .navbar {
   margin-bottom: 150px;
 }

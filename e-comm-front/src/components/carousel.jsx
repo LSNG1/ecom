@@ -1,49 +1,46 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+import * as React from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
 import "./carousel.css";
-
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
-    {
-        imgPath:
-            'https://media.topachat.com/media/s1000/649be289cb42ac1f062be67d.webp',
-    },
-    {
-        imgPath:
-            'https://media.topachat.com/media/s1000/64c77d9e642f572b251f3ddf.webp',
-    },
-    {
-        imgPath:
-            'https://media.ldlc.com/encart/p/21462_b.jpg',
-    },
-    {
-        imgPath:
-            'https://www.aorus.com/image/banner/GOELITE-1690280290.jpg',
-    },
-    {
-        imgPath:
-            'https://media.topachat.com/media/s1000/63639dcc3b1f41344e0c11a3.webp',
-    },
+  {
+    imgPath:
+      "https://media.topachat.com/media/s1000/649be289cb42ac1f062be67d.webp",
+  },
+  {
+    imgPath:
+      "https://media.topachat.com/media/s1000/64c77d9e642f572b251f3ddf.webp",
+  },
+  {
+    imgPath: "https://media.ldlc.com/encart/p/21462_b.jpg",
+  },
+  {
+    imgPath: "https://www.aorus.com/image/banner/GOELITE-1690280290.jpg",
+  },
+  {
+    imgPath:
+      "https://media.topachat.com/media/s1000/63639dcc3b1f41344e0c11a3.webp",
+  },
 ];
 
 function SwipeableTextMobileStepper() {
-    const theme = useTheme();
-    const [activeStep, setActiveStep] = React.useState(0);
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = React.useState(0);
 
-    const handleStepChange = (step) => {
-        setActiveStep(step);
-    };
+  const handleStepChange = (step) => {
+    setActiveStep(step);
+  };
 
-    return (
-        <Box sx={{ maxWidth: 1000000000, flexGrow: 1 }}>
-            <div className="conteneur">
+  return (
+    <Box sx={{ maxWidth: 1000000000, flexGrow: 1 }}>
+      <div className="conteneur">
         <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
@@ -55,8 +52,8 @@ function SwipeableTextMobileStepper() {
                   component="img"
                   sx={{
                     height: 600,
-                    display: 'block',
-                    overflow: 'hidden',
+                    display: "block",
+                    overflow: "hidden",
                     width: 1600,
                   }}
                   src={step.imgPath}
@@ -65,10 +62,10 @@ function SwipeableTextMobileStepper() {
               ) : null}
             </div>
           ))}
-            </AutoPlaySwipeableViews>
-            </div>
-        </Box>
-    );
+        </AutoPlaySwipeableViews>
+      </div>
+    </Box>
+  );
 }
 
 export default SwipeableTextMobileStepper;
