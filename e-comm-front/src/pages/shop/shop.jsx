@@ -5,10 +5,10 @@ import { Product } from './product';
 import { useState, useEffect } from 'react'
 import './shop.css';
 import SwipeableTextMobileStepper from '../../components/carousel'
-export const Shop = () => {
+export const Shop  =  () => {
   const [ data, setData ] = useState([]);
   const [ IsUser, setIsUser ] = useState([]);
-  // const [  ] = useState([]);
+  const [ array, setArray ] = useState([]);
   useEffect(()=>{
     fetch('http://localhost:8000/api/gpus?page=1', {
             headers: {
@@ -29,27 +29,25 @@ export const Shop = () => {
       })
   },[])
 
-  useEffect(()=>{
-    console.table("yoyo", data[0]?.name)
+  // useEffect(()=>{
+  //   console.table("yoyo", data[0]?.name)
     
-  },[data])
+  // },[data])
 
-  function addToCart1(id){
+  async function addToCart1(id){
+
     // http://localhost:8000/api/user_carts
     let utm = `http://localhost:8000/api/gpus/${id}`
     let user = `http://localhost:8000/api/user_carts/1`
-
-    fetch(user, {
+    // setState((prevState) => ({ ...prevState, value1: "new 1" }));
+    setArray((prevState)  => ({...prevState, utm}))
+    await fetch(user, {
     headers: {
         'accept': 'application/ld+json'
     }
 });
 
-
-
-
-
-  fetch("http://localhost:8000/api/user_carts/1").then((response) => {
+  await fetch("http://localhost:8000/api/user_carts/1").then((response) => {
     if (!response.ok) {
         console.log(response.statusText);
     }
@@ -62,55 +60,23 @@ export const Shop = () => {
     // console.table(json)
 
   }  
-  // if(IsUser == null){
-  //   console.log("null")
-  //   fetch('http://localhost:8000/api/user_carts', {
-  // method: 'POST',
-  // headers: {
-  //     'accept': 'application/ld+json',
-  //     'Content-Type': 'application/ld+json'
-  // },
-  // body: `{\n  "idUser": 1,\n  "items": "${utm}"}`
-  // })}else{
-    console.log("notNull" , IsUser)
 
-    fetch("http://localhost:8000/api/user_carts/1", {
+    console.log("notNull" , IsUser)
+  let bigdata= IsUser + "," + utm
+      fetch("http://localhost:8000/api/user_carts/1", {
       method: 'PUT',
       headers: {
           'accept': 'application/ld+json',
           'Content-Type': 'application/ld+json'
       },
-      body: `{"items": "${IsUser},${utm}"}`
+      body: `{"items": "${bigdata}"}`
   });
     
   // }
   
   }) //setData here
-  
-
   }
-//   function getGpu(){
 
-//     const [ data, setData ] = useState();
-    
-    
-//     fetch('http://localhost:8000/api/gpus?page=1', {
-//       headers: {
-//         'accept': 'application/ld+json'
-//     }
-// }).then((response) => {
-//   if (!response.ok) {
-//       console.log(response.statusText);
-//   }
-//   return response.json();
-// })
-// .then(json => setData(json)) //setData here
-// .catch((error) => {
-//   console.log(error.message);
-// })
-// }
-
-  
   return (
     <div className='shop'>
       <SwipeableTextMobileStepper />

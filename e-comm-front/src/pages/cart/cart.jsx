@@ -12,8 +12,8 @@ const navigate = useNavigate();
 const [ data, setData ] = useState([]);
 const [ price, setPrice ] = useState([]);
 const [ total, setTotal ] = useState(0);
-const [ name, setName ] = useState(0);
-const [ chipset, setChipset ] = useState(0);
+const [ name, setName ] = useState([]);
+const [ chipset, setChipset ] = useState([]);
 
 
 
@@ -117,6 +117,7 @@ useEffect(() => {
           <p key={index}>item: {product.name}</p>
           <p key={index}>chipset: {product.chipset}</p>
           <p key={index}>price: {product.price}</p>
+          <br></br>
           </>
          
         ))}
