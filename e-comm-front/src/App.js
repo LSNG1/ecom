@@ -6,6 +6,7 @@ import { Cart } from "./pages/cart/cart";
 import { ShopContextProvider } from "./context/shop-context";
 import { Register } from "./pages/user/register";
 import Composants from "./components/Composants";
+import Details from "./components/Details";
 
 function App() {
 	
@@ -18,8 +19,8 @@ function App() {
           <Route path="/" element={<Shop />}/>
           <Route path="/Cart" element={<Cart />}/>
           <Route path="/register" element={<Register />}/>
-
           <Route path="/produits" element={<Composants/>}/>
+          <Route path="/produits/gpu/:id" element={<Details/>}/>
 
 
         </Routes>

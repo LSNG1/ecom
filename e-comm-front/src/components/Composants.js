@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { search } from 'core-js/fn/symbol';
 
+
 export default function Composants() {
   const [data, setData] = useState([]);
   const [choix, setChoix] = useState(0);
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState('');
+  const [categorie, setCategorie] = useState('');
 
   const handleChange = event => {
     setMessage(event.target.value);
@@ -20,13 +22,18 @@ export default function Composants() {
 
   const gpu = () => {
     setChoix("gpus");
-    setUrl('http://localhost:8000/api/gpus?page=1&name=');
+    // setUrl('http://localhost:8000/api/gpus?page=1&name=');
+    setUrl('https://127.0.0.1:8000/api/gpus?page=1&name=');
+    setCategorie("gpu")
+
     console.log('gpu');
   };
 
   const cpu = () => {
     setChoix("cpus");
-    setUrl('http://localhost:8000/api/cpus?page=1&name=');
+    // setUrl('http://localhost:8000/api/cpus?page=1&name=');
+    setUrl('https://127.0.0.1:8000/api/cpus?page=1&name=');
+
     console.log('cpu');
   };
 
@@ -46,7 +53,8 @@ export default function Composants() {
       function search(a){
         console.log("search" + a)
         axios
-        .get(`http://localhost:8000/api/${choix}?page=1&name=${a}`)
+        // .get(`http://localhost:8000/api/${choix}?page=1&name=${a}`)
+        .get(`https://127.0.0.1:8000/api/${choix}?page=1&name=${a}`)
         .then((res) => {
           setData(res.data['hydra:member']);
         })
@@ -99,9 +107,10 @@ export default function Composants() {
                   borderRadius: 10,
                   marginBlock: 10,
                 }}
-              >
+              ><a href={'produits/' + categorie + '/' + dataObj.id}>
                 <p style={{ fontSize: 20, color: 'white' }}>{dataObj.name}</p>
                 <p style={{ fontSize: 20, color: 'white' }}>{dataObj.price}€</p>
+                </a>
               </div>
             );
           })}
