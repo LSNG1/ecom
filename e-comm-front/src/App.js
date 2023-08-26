@@ -9,7 +9,6 @@ import SignInSide from "./pages/user/login";
 import { ShopContextProvider } from "./context/shop-context";
 import { Login } from "./pages/user/login";
 import Composants from "./components/Composants";
-import { AdminGuesser, ResourceGuesser } from "@api-platform/admin";
 
 import { Admin } from "./pages/admin/admin";
 
