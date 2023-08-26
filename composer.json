@@ -10,6 +10,7 @@
         "amphp/http-client": "^4.2.1",
         "api-platform/core": "^3.1",
         "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.15",
         "easycorp/easyadmin-bundle": "^4.7",
@@ -19,6 +20,7 @@
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.23",
         "symfony/asset": "6.3.*",
+        "symfony/browser-kit": "6.3.*",
         "symfony/console": "6.3.*",
         "symfony/debug-bundle": "6.3.*",
         "symfony/doctrine-messenger": "6.3.*",
@@ -51,7 +53,8 @@
         "symfony/yaml": "6.3.*",
         "symfonycasts/verify-email-bundle": "^1.13",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "zenstruck/foundry": "^1.35"
     },
     "config": {
         "allow-plugins": {
@@ -102,6 +105,7 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.3.*",
         "symfony/css-selector": "6.3.*",
@@ -109,7 +113,8 @@
         "symfony/maker-bundle": "^1.50",
         "symfony/phpunit-bridge": "^6.3",
         "symfony/stopwatch": "6.3.*",
-        "symfony/web-profiler-bundle": "6.3.*"
+        "symfony/web-profiler-bundle": "6.3.*",
+        "zenstruck/foundry": "^1.35"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.50",

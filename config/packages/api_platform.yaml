@@ -1,6 +1,6 @@
 api_platform:
-    swagger:
-         api_keys:
-             JWT:
-                name: Authorization
-                type: header
+    formats:
+        jsonld: [ 'application/ld+json' ]
+        json: [ 'application/json' ]
+        html: [ 'text/html' ]
+        jsonhal: [ 'application/hal+json' ]

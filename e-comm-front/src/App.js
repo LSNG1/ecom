@@ -32,14 +32,7 @@ function App() {
             <Route path="/articles/:id" element={<ArticlePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<SignInSide />} />
-            <Route
-              path="/admin/*"
-              element={
-                <Admin>
-                  <ResourceGuesser name="boxes" />
-                </Admin>
-              }
-            />
+            <Route path="/admin/*" element={<Admin />} />
           </Routes>
           <Footer />
         </Router>

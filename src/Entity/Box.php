@@ -8,8 +8,8 @@ use App\Repository\BoxRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource]
 
+#[ApiResource]
 #[ORM\Entity(repositoryClass: BoxRepository::class)]
 class Box
 {
