@@ -7,6 +7,9 @@ use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\UserCartRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
+
+
 
 #[ORM\Entity(repositoryClass: UserCartRepository::class)]
 #[ApiFilter(SearchFilter::class, properties: ['idUser' => 'exact'])]
