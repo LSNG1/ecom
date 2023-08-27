@@ -3,17 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-
-
-use App\Repository\CpuRepository;
+use App\Repository\CpuCoolerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 
-#[ORM\Entity(repositoryClass: CpuCoolerRepository::class)]
 #[ApiResource]
+#[ORM\Entity(repositoryClass: CpuCoolerRepository::class)]
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class CpuCooler
 {

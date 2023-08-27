@@ -46,7 +46,7 @@ class Cpu
     private ?string $tdp = null;
 
 	#[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private ?int $graphics = null;
+    private ?string $graphics = null;
 
     #[ORM\Column]
     private ?bool $smt = null;

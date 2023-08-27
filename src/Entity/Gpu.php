@@ -14,7 +14,6 @@ use ApiPlatform\Metadata\ApiResource;
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 
 #[ORM\Entity(repositoryClass: GpuRepository::class)]
-#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class Gpu
 {
     #[ORM\Id]
