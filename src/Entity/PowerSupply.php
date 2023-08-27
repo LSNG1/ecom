@@ -8,9 +8,8 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 #[ApiResource]
-#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
-
 #[ORM\Entity(repositoryClass: PowerSupplyRepository::class)]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class PowerSupply
 {
     #[ORM\Id]
