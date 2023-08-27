@@ -100,7 +100,7 @@ export class Register extends Component {
 
     axios({
       method: 'post',
-      url: 'https://localhost:8000/api/users',
+      url: 'http://localhost:8000/api/users',
       data: userWithHashedPassword
     })
       .then((response) => {

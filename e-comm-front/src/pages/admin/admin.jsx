@@ -14,19 +14,11 @@ const schemaAnalyzer = hydraSchemaAnalyzer();
 
 export const Admin = () => (
   <>
-    <h1>Admin Component Debug</h1>
-{/* 
-    <div>
-      <Link to="/admin/boxes">Boxes</Link>
-      <Link to="/admin/cpus">CPUs</Link>
-      <Link to="/admin/cpu_coolers">CPU Coolers</Link>
-      <Link to="/admin/gpus">GPUs</Link>
-    </div> */}
-	<HydraAdmin entrypoint="http://localhost:8000/api">
-    {/* ... */}
-  </HydraAdmin>
-    {/* <AdminGuesser dataProvider={dataProvider} schemaAnalyzer={schemaAnalyzer}>
-    </AdminGuesser> */}
+     <iframe
+      src="http://localhost:8000/api"
+      title="API Platform Admin Interface"
+      style={{ width: '100%', height: '100vh', border: 'none' }}
+    ></iframe>
   </>
 );
 
