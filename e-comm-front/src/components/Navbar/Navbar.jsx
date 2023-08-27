@@ -2,9 +2,9 @@ import { ShoppingCart } from "phosphor-react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import "./navbar.css";
-import logo from "../assets/logo.png";
-import profil from "../assets/Web capture_3-8-2023_121450_wsl.localhost.jpeg";
+import "./Navbar.css";
+import logo from "../../assets/logo.png";
+import profil from "../../assets/Web capture_3-8-2023_121450_wsl.localhost.jpeg";
 // Mui Framework
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";

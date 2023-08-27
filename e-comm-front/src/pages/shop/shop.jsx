@@ -4,7 +4,7 @@ import { Product } from './product';
 // import useState from "react";
 import { useState, useEffect } from 'react'
 import './shop.css';
-import SwipeableTextMobileStepper from '../../components/carousel'
+import SwipeableTextMobileStepper from '../../components/Carousel/carousel'
 export const Shop  =  () => {
   const [ data, setData ] = useState([]);
   const [ IsUser, setIsUser ] = useState([]);
