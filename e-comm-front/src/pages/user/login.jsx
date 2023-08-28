@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Box, Button, Container, Typography, Checkbox, FormControlLabel, Grid, Paper, CssBaseline } from '@mui/material';
 import Link from '@mui/material/Link';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+	const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,6 +24,10 @@ export const Login = () => {
     try {
       const response = await axios.post('http://localhost:8000/api/login', { email, password });
       console.log(response.data.token);
+	  if (response.data.token) {
+		  localStorage.setItem('token', response.data.token);
+		  navigate('/');
+	  }
     } catch (error) {
       console.log(error);
     }
