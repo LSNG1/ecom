@@ -1,0 +1,13 @@
+Unused devDependencies
+* @babel/core
+* @babel/preset-env
+* @babel/preset-react
+* autoprefixer
+* core-js
+* postcss
+* postcss-loader
+* regenerator-runtime
+* tailwindcss
+* webpack
+* webpack-cli
+* webpack-notifier
