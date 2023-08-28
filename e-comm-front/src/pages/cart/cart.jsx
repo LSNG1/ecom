@@ -1,139 +1,111 @@
-import React, { useContext } from 'react';
-import { PRODUCTS } from '../../products';
-import { ShopContext } from '../../context/shop-context';
-import { CartItem } from './cart-item';
+import React, { useContext, useState, useEffect } from "react";
+import { ShopContext } from "../../context/shop-context";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
-import "./cart.css";
+
 export const Cart = () => {
-const { cartItems, getTotalCartAmount } = useContext(ShopContext);
-// const totalAmount = getTotalCartAmount();
-const navigate = useNavigate();
-const [ data, setData ] = useState([]);
-const [ price, setPrice ] = useState([]);
-const [ total, setTotal ] = useState(0);
-const [ name, setName ] = useState([]);
-const [ chipset, setChipset ] = useState([]);
+  const { cartItems, addToCart, removeFromCart } = useContext(ShopContext);
+  const navigate = useNavigate();
 
+  const [cartData, setCartData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [error, setError] = useState(null);
 
-
-
-useEffect(() => {
-    fetch('http://localhost:8000/api/user_carts/1', {
-      headers: {
-        'accept': 'application/ld+json'
-      }
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.log(response.statusText);
-        }
-        return response.json();
-      })
-      .then(json => {
-        console.log("oehid", json.items);
-        let dataStr = JSON.stringify(json.items);
-        let count = dataStr.length;
-        let u = dataStr.substr(2, count - 3);
-        var dataArray = u.split(",");
-        
-        Promise.all(dataArray.map(url =>
-          fetch(url)
-            .then(response => {
-              if (!response.ok) {
-                console.log(response.statusText);
-              }
-              setTotal(1)
-              return response.json();
-            })
-        ))
-        .then(dataArray => {
-          const fetchedData = dataArray.map(json => json.chipset + "," + json.name + "," + json.price);
-    setData(fetchedData);
-
-    const prices = fetchedData.map(product => {
-      const arraydata = product.split(",");
-      return parseFloat(arraydata[2]);
-    });
-
-    const name = fetchedData.map(product => {
-      const arraydata = product.split(",");
-      return arraydata[1];
-    });
-
-    const chipset = fetchedData.map(product => {
-      const arraydata = product.split(",");
-      return arraydata[0];
-    });
-
-    const totalPrice = prices.reduce((total, price) => total + price, 0);
-    setTotal(totalPrice);
-    setPrice(prices); 
-    setName(name)
-    setChipset(chipset)
-
-  })
-        .catch((error) => {
-          console.log(error.message);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/user_carts/1", {
+          headers: {
+            accept: "application/ld+json",
+          },
         });
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
 
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+
+        const jsonData = await response.json();
+
+        if (!jsonData || !jsonData.items) {
+          throw new Error("Invalid response format");
+        }
+
+        const itemUrls = jsonData.items.split(",").filter(Boolean);
+
+        const responses = await Promise.all(itemUrls.map((url) => fetch(url)));
+        const jsonResponses = await Promise.all(
+          responses.map((res) => res.json())
+        );
+
+        const cartItems = jsonResponses.map((json) => ({
+          chipset: json.chipset,
+          name: json.name,
+          price: json.price,
+        }));
+
+        setCartData(cartItems);
+
+        const totalPrice = cartItems.reduce(
+          (total, product) => total + product.price,
+          0
+        );
+        setTotalPrice(totalPrice);
+      } catch (error) {
+        setError(error.message);
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  console.log("console log :", data);
-  console.log(price)
-
-  // const all = [
-  //   {
-
-  //     "name":name
-  //   },
-  //   {
-
-  //     "price": price
-  //   }
-  // ]
-
-  const all = name.map((productName, index) => ({
-    name: productName,
-    price: price[index],
-    chipset: chipset[index]
-  }));
-  console.log(all)
-
-
+  if (error) {
+    return <div className="cart">Error fetching data: {error}</div>;
+  }
 
   return (
-    <div className='cart'>
-      <div>
-        <h1>Your Cart</h1>
-      </div>
-      <div className='cartItems'>
-        {all.map((product, index) =>  (
-          <>
-          <p key={index}>item: {product.name}</p>
-          <p key={index}>chipset: {product.chipset}</p>
-          <p key={index}>price: {product.price}</p>
-          <br></br>
-          </>
-         
+    <div className="p-4 bg-white rounded-lg shadow-md">
+      <h1 className="text-2xl font-semibold mb-4">Your Cart</h1>
+      <div className="space-y-4">
+        {cartData.map((product, index) => (
+          <div className="p-4 border rounded-lg shadow-md flex flex-col items-center">
+            <p className="font-semibold">{product.name}</p>
+            <p>Chipset: {product.chipset}</p>
+            <p>Price: ${product.price}</p>
+            <div className="flex space-x-4 mt-2">
+              <button
+                className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
+                onClick={() => addToCart(product.itemId)}
+              >
+                Add to Cart
+              </button>
+              <button
+                className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                onClick={() => removeFromCart(product.itemId)}
+              >
+                Remove from Cart
+              </button>
+            </div>
+          </div>
         ))}
-       
-         
       </div>
-      {total > 0 ? (
-        <div className='checkout'>
-          <p>Subtotal: ${total}</p>
-          <button onClick={() => navigate("/")}> Continue Shopping </button>
-          <button> Checkout </button>
+      {totalPrice > 0 ? (
+      <div className="mt-4">
+        <p className="font-semibold">Subtotal: ${totalPrice}</p>
+        <div className="flex flex-col items-center mt-2"> {/* Added flex-col and items-center */}
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+            onClick={() => navigate("/")}
+          >
+            Continue Shopping
+          </button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-2">
+            Checkout
+          </button>
         </div>
-      ) : (
-        <h1> Your Cart is Empty </h1>
-      )}
+      </div>
+    ) : (
+      <h1 className="text-2xl font-semibold mt-4">Your Cart is Empty</h1>
+    )}
     </div>
-  )
-  
-}
+  );
+};
