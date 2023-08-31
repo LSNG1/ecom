@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
-	HydraAdmin,
   AdminGuesser,
   hydraDataProvider,
   hydraSchemaAnalyzer,
@@ -14,11 +12,19 @@ const schemaAnalyzer = hydraSchemaAnalyzer();
 
 export const Admin = () => (
   <>
-     <iframe
-      src="http://localhost:8000/api"
-      title="API Platform Admin Interface"
-      style={{ width: '100%', height: '100vh', border: 'none' }}
-    ></iframe>
+    <AdminGuesser basename="/admin" dataProvider={dataProvider} schemaAnalyzer={schemaAnalyzer}>
+      <ResourceGuesser name={"boxes"} />
+      <ResourceGuesser name={"cpus"} />
+      <ResourceGuesser name={"cpu_coolers"} />
+      <ResourceGuesser name={"gpus"} />
+      <ResourceGuesser name={"hard_drives"} />
+      <ResourceGuesser name={"headphones"} />
+      <ResourceGuesser name={"memories"} />
+      <ResourceGuesser name={"motherboards"} />
+      <ResourceGuesser name={"mice"} />
+      <ResourceGuesser name={"power_supplies"} />
+      <ResourceGuesser name={"users"} />
+    </AdminGuesser>
   </>
 );
 
