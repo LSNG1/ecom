@@ -5,19 +5,33 @@ import Link from '@mui/material/Link';
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+	/* `const navigate = useNavigate();` is using the `useNavigate` hook from the `react-router-dom`
+	library to get a function that can be used to navigate to different routes in the application. */
 	const navigate = useNavigate();
-
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+	/**
+	 * The function `handleEmailChange` updates the value of the `email` state variable based on the value
+	 * of the input field.
+	 */
 	const handleEmailChange = (event) => {
 		setEmail(event.target.value);
 	};
 
+	/**
+	 * The function "handlePasswordChange" updates the state variable "password" with the value of the
+	 * input field.
+	 */
 	const handlePasswordChange = (event) => {
 		setPassword(event.target.value);
 	};
 
+	/**
+	 * The handleSubmit function is an asynchronous function that handles form submission by making a POST
+	 * request to a login API endpoint, storing the token in local storage if it exists, and navigating to
+	 * the home page.
+	 */
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 

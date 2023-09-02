@@ -20,29 +20,30 @@ import Composants from "./components/Composants";
 import Details from "./components/Details";
 
 function App() {
-  return (
-    <div className="App">
-      <ShopContextProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Shop />} />
-            <Route path="/Cart" element={<Cart />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/produits" element={<Composants />} />
-            <Route path="/Profil" element={<User />} />
-            <Route path="/articles/:id" element={<ArticlePage />} />
-            <Route path="/admin/*" element={<Admin />} />
-          <Route path="/produits/gpu/:id" element={<Details/>}/>
+	return (
+		<div className="App">
+			<ShopContextProvider>
+				<Router>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<Shop />} />
+						<Route path="/Cart" element={<Cart />} />
+						
+						<Route path="/register" element={<Register />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/produits" element={<Composants />} />
+						<Route path="/Profil" element={<User />} />
+						<Route path="/articles/:id" element={<ArticlePage />} />
+						<Route path="/produits/gpu/:id" element={<Details />} />
+						<Route path="/admin/*" element={<Admin />} />
 
 
-          </Routes>
-          <Footer />
-        </Router>
-      </ShopContextProvider>
-    </div>
-  );
+					</Routes>
+					<Footer />
+				</Router>
+			</ShopContextProvider>
+		</div>
+	);
 }
 
 export default App;
