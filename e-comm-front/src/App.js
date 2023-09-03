@@ -5,14 +5,9 @@ import { Shop } from "./pages/shop/shop";
 import { Cart } from "./pages/cart/cart";
 import { User } from "./pages/profil/user";
 import Register from "./pages/user/register";
-
-import SignInSide from "./pages/user/login";
-import { ShopContextProvider } from "./context/shop-context";
+import { ShopContextProvider } from "./context/shopContext";
 import { Login } from "./pages/user/login";
-import { AdminGuesser, ResourceGuesser } from "@api-platform/admin";
-
 import { Admin } from "./pages/admin/admin";
-
 import Footer from "./components/footer";
 import ArticlePage from "./ArticlePage";
 
