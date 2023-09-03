@@ -5,73 +5,54 @@ import { useNavigate } from "react-router-dom";
 export const Cart = () => {
 	const { cartItems, addToCart, removeFromCart } = useContext(ShopContext);
 	const navigate = useNavigate();
-
-	const [cartData, setCartData] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(0);
-	const [error, setError] = useState(null);
+	const [fetchedCartItems, setFetchedCartItems] = useState([]);
+	console.log(cartItems);
 
 	useEffect(() => {
-		console.log("Fetching data...");
-		const fetchData = async () => {
+		async function fetchData(url) {
 			try {
-				const response = await fetch("http://localhost:8000/api/user_carts/1", {
-					headers: {
-						accept: "application/ld+json",
-					},
-				});
-
+				const response = await fetch(url);
 				if (!response.ok) {
-					throw new Error(response.statusText);
+					throw new Error(`HTTP error! Status: ${response.status}`);
 				}
-
-				const jsonData = await response.json();
-				console.log("Data fetched:", jsonData);
-
-				if (!jsonData || !jsonData.items) {
-					setCartData([]);
-				} else {
-					const itemUrls = jsonData.items.split(",").filter(Boolean);
-					const responses = await Promise.all(itemUrls.map((url) => fetch(url)));
-					const jsonResponses = await Promise.all(
-						responses.map((res) => res.json())
-					);
-					console.log("JSON responses:", jsonResponses);
-					const cartItems = jsonResponses.map((json) => ({
-						itemId: json.id,
-						chipset: json.chipset,
-						name: json.name,
-						price: json.price,
-					}));
-					console.log("Cart items:", cartItems);
-					setCartData(cartItems);
-
-					const totalPrice = cartItems.reduce(
-						(total, product) => total + product.price,
-						0
-					);
-					setTotalPrice(totalPrice);
-				}
+				const data = await response.json();
+				return data;
 			} catch (error) {
-				setError(error.message);
-				console.error("Error fetching data:", error.message);
+				console.error('Error fetching data:', error);
+				return null;
 			}
-		};
+		}
 
-		fetchData();
-	}, []);
+		async function fetchAllData() {
+			const promises = cartItems.map((url) => fetchData(url));
+			const results = await Promise.all(promises);
+			const validResults = results.filter((result) => result !== null);
+			setFetchedCartItems(validResults);
+			console.log(validResults);
+		}
 
-	if (error) {
-		return <div className="cart">Error fetching data: {error}</div>;
-	}
+		if (cartItems.length > 0) {
+			fetchAllData();
+		}
+	}, [cartItems]);
+
+	useEffect(() => {
+		let total = 0;
+		fetchedCartItems.forEach((product) => {
+			total += product.price;
+		});
+		setTotalPrice(total);
+	}, [fetchedCartItems]);
 
 	return (
 		<div className="p-4 bg-white rounded-lg shadow-md">
 			<h1 className="text-2xl font-semibold mb-4">Your Cart</h1>
-			{cartData.length > 0 ? (
+			{fetchedCartItems.length > 0 ? (
 				<div className="space-y-4">
-					{cartData.map((product, index) => (
+					{fetchedCartItems.map((product, index) => (
 						<div
-							key={product.itemId}
+							key={product.id}
 							className="p-4 border rounded-lg shadow-md flex flex-col items-center"
 						>
 							<p className="font-semibold">{product.name}</p>
@@ -80,13 +61,13 @@ export const Cart = () => {
 							<div className="flex space-x-4 mt-2">
 								<button
 									className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
-									onClick={() => addToCart(product.itemId)}
+									onClick={() => addToCart(product.id)}
 								>
 									Add to Cart
 								</button>
 								<button
 									className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
-									onClick={() => removeFromCart(product.itemId)}
+									onClick={() => removeFromCart(product.id)}
 								>
 									Remove from Cart
 								</button>
@@ -107,7 +88,6 @@ export const Cart = () => {
 						>
 							Checkout
 						</button>
-						
 					</div>
 				</div>
 			) : null}

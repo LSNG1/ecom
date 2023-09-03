@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useContext} from "react";
 import SwipeableTextMobileStepper from "../../components/carousel";
 import "./shop.css";
+import { ShopContext } from "../../context/shop-context";
 
 export const Shop = () => {
+	const { addToCart } = useContext(ShopContext);	
 	const [data, setData] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
-	const [IsUser, setIsUser] = useState([]);
-	const [array, setArray] = useState({});
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -33,41 +33,6 @@ export const Shop = () => {
 
 		fetchData();
 	}, [currentPage]);
-
-	async function addToCart1(id) {
-		const utm = `http://localhost:8000/api/gpus/${id}`;
-		const user = `http://localhost:8000/api/user_carts/1`;
-		setArray((prevState) => ({ ...prevState, utm }));
-
-		try {
-			await fetch(user, {
-				headers: {
-					accept: "application/ld+json",
-				},
-			});
-
-			const response = await fetch("http://localhost:8000/api/user_carts/1");
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-			const json = await response.json();
-			if (json.items) {
-				setIsUser(json.items);
-			}
-
-			const bigdata = IsUser + "," + utm;
-			await fetch("http://localhost:8000/api/user_carts/1", {
-				method: "PUT",
-				headers: {
-					accept: "application/ld+json",
-					"Content-Type": "application/ld+json",
-				},
-				body: `{"items": "${bigdata}"}`,
-			});
-		} catch (error) {
-			console.error("Error in addToCart1:", error);
-		}
-	}
 
 	const renderPagination = () => {
 		const pages = [];
@@ -106,7 +71,7 @@ export const Shop = () => {
 						</div>
 						<button
 							className="addToCartBtn"
-							onClick={() => addToCart1(article.id)}
+							onClick={() => addToCart(article.id)}
 						>
 							Add To Cart
 						</button>

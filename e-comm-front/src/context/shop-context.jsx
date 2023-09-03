@@ -1,76 +1,49 @@
-import React, { createContext, useState } from 'react';
-import { PRODUCTS } from '../products';
+import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-	let cart = {};
-	for (let i = 0; i < PRODUCTS.length + 1; i++) {
-		cart[i] = 0;
-	}
-	return cart;
-};
+export const ShopContextProvider = ({ children }) => {
+	const [cartItems, setCartItems] = useState([]);
 
-export const ShopContextProvider = (props) => {
-	const [cartItems, setCartItems] = useState(getDefaultCart());
-
-	const addToCart = async (itemId) => {
-		console.log("Adding to cart:", itemId);
-
-		await fetch(`http://localhost:8000/api/user_carts/1`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/ld+json',
-			},
-			body: JSON.stringify({
-				items: [...cartItems, itemId].filter(Boolean).join(','),
-			}),
-		});
-
-		setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-	};
-
-	const removeFromCart = async (itemId) => {
-		console.log("Removing from cart:", itemId);
-
-		const updatedCartItems = { ...cartItems };
-		updatedCartItems[itemId] = Math.max(0, updatedCartItems[itemId] - 1);
-
-		const updatedItemsString = Object.keys(updatedCartItems)
-			.map((key) => `${key},${'http://localhost:8000/api/gpus/' + key}`) // Convert object keys to comma-separated strings
-			.filter((item) => updatedCartItems[item.split(',')[0]] > 0) // Filter out items with count 0
-
-		await fetch(`http://localhost:8000/api/user_carts/1`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/ld+json',
-			},
-			body: JSON.stringify({
-				items: updatedItemsString.join(','),
-			}),
-		});
-
-		setCartItems(updatedCartItems);
-	};
-	const getTotalCartAmount = () => {
-		let totalAmount = 0;
-		for (const item in cartItems) {
-			if (cartItems[item] > 0) {
-				let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
-				totalAmount += cartItems[item] * itemInfo.price;
-			}
+	useEffect(() => {
+		const storedCartItems = localStorage.getItem('cartItems');
+		if (storedCartItems) {
+			setCartItems(JSON.parse(storedCartItems));
 		}
-		return totalAmount;
+	}, []);
+
+	const addToCart = (itemId) => {
+		const item = `http://localhost:8000/api/gpus/${itemId}`;
+		setCartItems((prevCartItems) => {
+			const updatedCart = [...prevCartItems, item];
+			localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+			return updatedCart;
+		});
+	};
+
+	const removeFromCart = (itemId) => {
+		console.log(itemId);
+		const itemToRemove = `http://localhost:8000/api/gpus/${itemId}`;
+		setCartItems((prevCartItems) => {
+			const updatedCart = prevCartItems.filter((cartItem) => cartItem !== itemToRemove);
+			localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+			console.log(updatedCart);
+			return updatedCart;
+		});
 	};
 
 	const contextValue = {
 		cartItems,
 		addToCart,
 		removeFromCart,
-		getTotalCartAmount,
 	};
 
 	return (
-		<ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>
+		<ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
 	);
+};
+
+ShopContextProvider.propTypes = {
+	children: PropTypes.node.isRequired,
 };

@@ -9,8 +9,6 @@ use App\Repository\UserCartRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
 
-
-
 #[ORM\Entity(repositoryClass: UserCartRepository::class)]
 #[ApiFilter(SearchFilter::class, properties: ['idUser' => 'exact'])]
 #[ApiResource]
@@ -24,8 +22,8 @@ class UserCart
     #[ORM\Column]
     private ?int $idUser = null;
 
-    #[ORM\Column(length: 4000, nullable: true)]
-    private ?string $items = null;
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private ?array $items = null;
 
     public function getId(): ?int
     {
@@ -44,12 +42,12 @@ class UserCart
         return $this;
     }
 
-    public function getItems(): ?string
+    public function getItems(): ?array
     {
         return $this->items;
     }
 
-    public function setItems(?string $items): static
+    public function setItems(?array $items): static
     {
         $this->items = $items;
 

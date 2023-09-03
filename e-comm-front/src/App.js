@@ -5,7 +5,7 @@ import { Shop } from "./pages/shop/shop";
 import { Cart } from "./pages/cart/cart";
 import { User } from "./pages/profil/user";
 import Register from "./pages/user/register";
-import { ShopContextProvider } from "./context/shopContext";
+import { ShopContextProvider } from "./context/shop-context";
 import { Login } from "./pages/user/login";
 import { Admin } from "./pages/admin/admin";
 import Footer from "./components/footer";
