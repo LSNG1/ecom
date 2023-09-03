@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
 
+use Doctrine\Common\Collections\Collection;
+
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Metadata\ApiResource;
@@ -18,6 +20,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+	
+	#[ORM\OneToMany(targetEntity: PaymentMethod::class, mappedBy: "user", cascade: ["persist"])]
+    private $paymentMethods;
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -45,6 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $region = null;
+	
 
     public function getId(): ?int
     {
@@ -170,6 +176,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRegion(?string $region): static
     {
         $this->region = $region;
+
+        return $this;
+    }
+
+	/**
+     * @return Collection|PaymentMethod[]
+     */
+    public function getPaymentMethods(): Collection
+    {
+        return $this->paymentMethods;
+    }
+
+    public function addPaymentMethod(PaymentMethod $paymentMethod): self
+    {
+        if (!$this->paymentMethods->contains($paymentMethod)) {
+            $this->paymentMethods[] = $paymentMethod;
+            $paymentMethod->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaymentMethod(PaymentMethod $paymentMethod): self
+    {
+        if ($this->paymentMethods->removeElement($paymentMethod)) {
+            // set the owning side to null (unless already changed)
+            if ($paymentMethod->getUser() === $this) {
+                $paymentMethod->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -28,6 +28,12 @@ class Mouse
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
+	#[ORM\Column(type: Types::FLOAT, nullable: true)]
+    private ?float $reductionAmount = null;
+
+	#[ORM\Column(type: Types::BIGINT, nullable: true)]
+    private ?float $shipmentFee = null;
+
 	#[ORM\Column(type: Types::INTEGER, nullable: true)]
 	private ?int $stock = null;
 
@@ -158,4 +164,29 @@ class Mouse
 
 		return $this;
 	}
+
+	public function getShipmentFee(): ?float
+	{
+		return $this->shipmentFee;
+	}
+
+	public function setShipmentFee(?float $shipmentFee): static
+	{
+		$this->shipmentFee = $shipmentFee;
+
+		return $this;
+	}
+
+	public function getReductionAmount(): ?float
+	{
+		return $this->reductionAmount;
+	}
+
+	public function setReductionAmount(?float $reductionAmount): static
+	{
+		$this->reductionAmount = $reductionAmount;
+
+		return $this;
+	}
+	
 }

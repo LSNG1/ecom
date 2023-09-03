@@ -17,3 +17,7 @@ payment_confirm:
     path: /api/confirm-payment
     controller: 'App\Controller\PaymentController::confirmPayment'
     methods: ['POST']
+
+customer_commands_view:
+    path: '/customer/{customerId}/commands'
+    controller: 'App\Controller\CustomerCommandsController::viewCommands'

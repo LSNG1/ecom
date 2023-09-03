@@ -24,8 +24,14 @@ class Gpu
     #[ORM\Column(length: 1024)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    private ?float $price = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $price = null;
+
+	#[ORM\Column(type: Types::FLOAT, nullable: true)]
+    private ?float $reductionAmount = null;
+	
+	#[ORM\Column(type: Types::BIGINT, nullable: true)]
+    private ?float $shipmentFee = null;
 
 	#[ORM\Column(type: 'string', length: 255, nullable: true)]
 	private ?string $status;
@@ -68,12 +74,12 @@ class Gpu
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(float $price): static
+    public function setPrice(?int $price): static
     {
         $this->price = $price;
 
@@ -172,6 +178,30 @@ class Gpu
 	public function setStatus(?string $status): static
 	{
 		$this->status = $status;
+
+		return $this;
+	}
+
+	public function getShipmentFee(): ?float
+	{
+		return $this->shipmentFee;
+	}
+
+	public function setShipmentFee(?float $shipmentFee): static
+	{
+		$this->shipmentFee = $shipmentFee;
+
+		return $this;
+	}
+
+	public function getReductionAmount(): ?float
+	{
+		return $this->reductionAmount;
+	}
+
+	public function setReductionAmount(?float $reductionAmount): static
+	{
+		$this->reductionAmount = $reductionAmount;
 
 		return $this;
 	}

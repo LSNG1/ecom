@@ -7,6 +7,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLocation } from "react-router-dom";
+import { User } from "phosphor-react";
 
 const stripePromise = loadStripe(
 	"pk_test_51NmGJyCDe7oVF85pCbcQNcB20YiCatJCjVhAJpGWDPwfcs3faO9KmKxrcN0GMtvtFajT4yXC2nG0QeUc1CW0RIji001ZzssJFN"
@@ -83,17 +84,21 @@ const Checkout = () => {
 		}
 	};
 
-	const createPaymentIntent = async () => {
+	const createPaymentIntent = async (userId, cartItems) => {
 		try {
-			const response = await fetch("http://localhost:8000/api/create-payment-intent", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					cartItems: cartItems, //
-				}),
-			});
+			const response = await fetch(
+				"http://localhost:8000/api/create-payment-intent",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						userId: userId, 
+						cartItems: cartItems,
+					}),
+				}
+			);
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! Status: ${response.status}`);
@@ -113,8 +118,10 @@ const Checkout = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const cardElement = elements.getElement(CardElement);
+		const userId = localStorage.getItem("userId") || null; // Default to null for guest users
+		console.log(userId);
 		if (cardElement) {
-			const clientSecret = await createPaymentIntent();
+			const clientSecret = await createPaymentIntent(userId, cartItems);
 			handlePayment(clientSecret, cardElement);
 		} else {
 			console.error("CardElement is not available");
