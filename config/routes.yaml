@@ -8,3 +8,12 @@ api_login:
     path: /api/login
     methods: ['POST']
 
+payment_create_intent:
+    path: /api/create-payment-intent
+    controller: 'App\Controller\PaymentController::createPaymentIntent'
+    methods: ['POST']
+
+payment_confirm:
+    path: /api/confirm-payment
+    controller: 'App\Controller\PaymentController::confirmPayment'
+    methods: ['POST']

@@ -84,7 +84,7 @@ export const Cart = () => {
 					<div className="flex flex-col items-center mt-2">
 						<button
 							className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
-							onClick={() => navigate("/Checkout")}
+							onClick={() => navigate(`/Checkout?cart=${JSON.stringify(fetchedCartItems)}`)}
 						>
 							Checkout
 						</button>
