@@ -42,7 +42,7 @@ export const Profile = () => {
 
   const handleSaveEdit = async () => {
     try {
-      const id = localStorage.getItem('userId'); // Get the user ID from localStorage
+      const id = localStorage.getItem('userId');
       await axios.put(`http://localhost:8000/api/users/${id}`, updatedUserData, {
         headers: {
         },

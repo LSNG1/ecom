@@ -1,13 +1,24 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { useNavigate } from "react-router-dom";
+import LoginPopup from "../../components/LoginPopup";
 
 export const Cart = () => {
+	const isAuthenticated = !!localStorage.getItem("token");
 	const { cartItems, addToCart, removeFromCart } = useContext(ShopContext);
 	const navigate = useNavigate();
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [fetchedCartItems, setFetchedCartItems] = useState([]);
 	console.log(cartItems);
+	const [showLoginPopup, setShowLoginPopup] = useState(false);
+
+	const handleShowLoginPopup = () => {
+		setShowLoginPopup(true);
+	};
+
+	const handleHideLoginPopup = () => {
+		setShowLoginPopup(false);
+	};
 
 	useEffect(() => {
 		async function fetchData(url) {
@@ -19,7 +30,7 @@ export const Cart = () => {
 				const data = await response.json();
 				return data;
 			} catch (error) {
-				console.error('Error fetching data:', error);
+				console.error("Error fetching data:", error);
 				return null;
 			}
 		}
@@ -82,12 +93,30 @@ export const Cart = () => {
 				<div className="mt-4">
 					<p className="font-semibold">Subtotal: ${totalPrice}</p>
 					<div className="flex flex-col items-center mt-2">
-						<button
-							className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
-							onClick={() => navigate(`/Checkout?cart=${JSON.stringify(fetchedCartItems)}`)}
-						>
-							Checkout
-						</button>
+						{isAuthenticated ? (
+							<button
+								className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
+								onClick={() => {
+									navigate(`/Checkout?cart=${JSON.stringify(fetchedCartItems)}`);
+								}}
+							>
+								Checkout
+							</button>
+						) : (
+							<button
+								className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
+								onClick={handleShowLoginPopup}
+							>
+								Login to Checkout
+							</button>
+						)}
+						{showLoginPopup && (
+							<LoginPopup
+								onLogin={handleHideLoginPopup}
+								onCancel={handleHideLoginPopup}
+								fetchedCartItems={fetchedCartItems}
+							/>
+						)}
 					</div>
 				</div>
 			) : null}
