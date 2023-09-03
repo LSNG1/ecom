@@ -1,110 +1,119 @@
-import React from "react";
-import { PRODUCTS } from "../../products";
-import { Product } from "./product";
-// import useState from "react";
-import { useState, useEffect } from "react";
-import "./shop.css";
+import React, { useState, useEffect } from "react";
 import SwipeableTextMobileStepper from "../../components/carousel";
+import "./shop.css";
+
 export const Shop = () => {
-  const [data, setData] = useState([]);
-  const [IsUser, setIsUser] = useState([]);
-  const [array, setArray] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:8000/api/gpus?page=1", {
-      headers: {
-        accept: "application/ld+json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.log(response.statusText);
-        }
-        return response.json();
-      })
-      .then((json) => {
-        console.log("oehid", json["hydra:member"]);
-        setData(json["hydra:member"]);
-      }) //setData here
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
+	const [data, setData] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [totalPages, setTotalPages] = useState(1);
+	const [IsUser, setIsUser] = useState([]);
+	const [array, setArray] = useState({});
 
-  // useEffect(()=>{
-  //   console.table("yoyo", data[0]?.name)
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					`http://localhost:8000/api/gpus?page=${currentPage}`,
+					{
+						headers: {
+							accept: "application/ld+json",
+						},
+					}
+				);
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				const json = await response.json();
+				setData(json["hydra:member"]);
+				setTotalPages(json["hydra:view"]["hydra:last"].split("=")[1]);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		};
 
-  // },[data])
+		fetchData();
+	}, [currentPage]);
 
-  async function addToCart1(id) {
-    // http://localhost:8000/api/user_carts
-    let utm = `http://localhost:8000/api/gpus/${id}`;
-    let user = `http://localhost:8000/api/user_carts/1`;
-    // setState((prevState) => ({ ...prevState, value1: "new 1" }));
-    setArray((prevState) => ({ ...prevState, utm }));
-    await fetch(user, {
-      headers: {
-        accept: "application/ld+json",
-      },
-    });
+	async function addToCart1(id) {
+		const utm = `http://localhost:8000/api/gpus/${id}`;
+		const user = `http://localhost:8000/api/user_carts/1`;
+		setArray((prevState) => ({ ...prevState, utm }));
 
-    await fetch("http://localhost:8000/api/user_carts/1")
-      .then((response) => {
-        if (!response.ok) {
-          console.log(response.statusText);
-        }
-        return response.json();
-      })
-      .then((json) => {
-        console.log("oehid", json.items);
-        if (json.items) {
-          setIsUser(json.items);
-          // console.table(json)
-        }
+		try {
+			await fetch(user, {
+				headers: {
+					accept: "application/ld+json",
+				},
+			});
 
-        console.log("notNull", IsUser);
-        let bigdata = IsUser + "," + utm;
-        fetch("http://localhost:8000/api/user_carts/1", {
-          method: "PUT",
-          headers: {
-            accept: "application/ld+json",
-            "Content-Type": "application/ld+json",
-          },
-          body: `{"items": "${bigdata}"}`,
-        });
+			const response = await fetch("http://localhost:8000/api/user_carts/1");
+			if (!response.ok) {
+				throw new Error("Network response was not ok");
+			}
+			const json = await response.json();
+			if (json.items) {
+				setIsUser(json.items);
+			}
 
-        // }
-      }); //setData here
-  }
+			const bigdata = IsUser + "," + utm;
+			await fetch("http://localhost:8000/api/user_carts/1", {
+				method: "PUT",
+				headers: {
+					accept: "application/ld+json",
+					"Content-Type": "application/ld+json",
+				},
+				body: `{"items": "${bigdata}"}`,
+			});
+		} catch (error) {
+			console.error("Error in addToCart1:", error);
+		}
+	}
 
-  return (
-    <div className="shop">
-      <button>Dick’s Fapper</button>
-      <div className="Carousel">
-        <SwipeableTextMobileStepper />
-      </div>
-      <div className="shopTitle">
-        <h1>Welcome Page</h1>
-      </div>
-      <div className="products">
-        {data.map((article) => (
-          <div className="product">
-            {/* <img src={productImage} alt={productName}/> */}
-            <div className="description">
-              <p>
-                <b>{article.name}</b>
-              </p>
-              <p>{article.price}</p>
-            </div>
-            <button
-              className="addToCartBttn"
-              onClick={() => addToCart1(article.id)}
-            >
-              {" "}
-              Add To Cart{" "}
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+	const renderPagination = () => {
+		const pages = [];
+		for (let i = 1; i <= totalPages; i++) {
+			pages.push(
+				<button
+					key={i}
+					className={`${i === currentPage ? "bg-blue-500" : "bg-gray-300"
+						} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
+					onClick={() => setCurrentPage(i)}
+				>
+					{i}
+				</button>
+			);
+		}
+		return pages;
+	};
+
+	return (
+		<div className="shop">
+			<button>Dick’s Fapper</button>
+			<div className="Carousel">
+				<SwipeableTextMobileStepper />
+			</div>
+			<div className="shopTitle">
+				<h1>Welcome Page</h1>
+			</div>
+			<div className="products">
+				{data.map((article) => (
+					<div className="product" key={article.id}>
+						<div className="description">
+							<p>
+								<b>{article.name}</b>
+							</p>
+							<p>{article.price}</p>
+						</div>
+						<button
+							className="addToCartBtn"
+							onClick={() => addToCart1(article.id)}
+						>
+							Add To Cart
+						</button>
+					</div>
+				))}
+			</div>
+			<div className="pagination">{renderPagination()}</div>
+		</div>
+	);
 };

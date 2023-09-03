@@ -28,11 +28,10 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Shop />} />
 						<Route path="/Cart" element={<Cart />} />
-						
+						<Route path="/Profil" element={<User />} />
 						<Route path="/register" element={<Register />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/produits" element={<Composants />} />
-						<Route path="/Profil" element={<User />} />
 						<Route path="/articles/:id" element={<ArticlePage />} />
 						<Route path="/produits/gpu/:id" element={<Details />} />
 						<Route path="/admin/*" element={<Admin />} />
