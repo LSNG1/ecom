@@ -14,4 +14,13 @@ $ npm install
 
 if you want the DB contact the admin.
 ```
-## 
+##
+
+## Features
+
+```
+
+
+```
+
+##
